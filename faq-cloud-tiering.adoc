@@ -4,7 +4,7 @@ permalink: faq-cloud-tiering.html
 keywords: faq, questions, requirements, service connector, agent, object store, object storage, aws, azure, bucket, cluster, aggregate, s3, storage class, standard, inactive data reporting, auto, volume tiering policy, policy, tiering policy, snapshot, cold, inactive, infrequent, agent, netapp console, console,cloud tier 
 summary: Estas preguntas frecuentes pueden ayudarte si simplemente buscas una respuesta rápida a una pregunta. 
 ---
-= Preguntas frecuentes técnicas sobre niveles de nube de NetApp
+= Preguntas frecuentes técnicas NetApp Cloud Tiering
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -70,7 +70,7 @@ FabricPool es la tecnología de niveles de ONTAP que se puede autogestionar a tr
 
 No. Dado que los metadatos del volumen nunca se clasifican según el nivel de rendimiento, no se puede acceder directamente a los datos almacenados en el almacenamiento de objetos.
 
-Sin embargo, Cloud Tiering se puede usar para lograr copias de seguridad y recuperación ante desastres rentables al habilitarlo en sistemas secundarios y volúmenes de destino SnapMirror (volúmenes DP), para organizar todos los datos (metadatos excluidos), reduciendo así el espacio ocupado por su centro de datos y el TCO.
+Sin embargo, Cloud Tiering se puede usar para lograr copias de seguridad y recuperación ante desastres rentables al habilitarlo en sistemas secundarios y volúmenes de destino SnapMirror (volúmenes DP), para organizar en niveles todos los datos (metadatos excluidos), reduciendo así el espacio de su centro de datos y el TCO.
 
 
 
@@ -82,7 +82,7 @@ La organización en niveles de la nube se habilita a nivel de volumen asociando 
 
 === ¿Cómo determina Cloud Tiering qué bloques se deben colocar en la nube?
 
-La política de niveles asociada con el volumen es el mecanismo que controla qué bloques se clasifican y cuándo.  La política define el tipo de bloques de datos (instantáneas, datos de usuario o ambos) y el período de enfriamiento. Verlink:concept-cloud-tiering.html#volume-tiering-policies["Políticas de niveles de volumen"] Para más detalles.
+La política de niveles asociada con el volumen es el mecanismo que controla qué bloques se clasifican y cuándo.  La política define el tipo de bloques de datos (instantáneas, datos de usuario o ambos) y el período de enfriamiento.  Verlink:concept-cloud-tiering.html#volume-tiering-policies["Políticas de niveles de volumen"] Para más detalles.
 
 
 
@@ -112,13 +112,13 @@ Las siguientes preguntas frecuentes están relacionadas con las licencias y los 
 
 === ¿Cuánto cuesta utilizar Cloud Tiering?
 
-Al agrupar datos fríos en la nube pública:
+Al agrupar datos fríos en niveles en la nube pública:
 
 * Para la suscripción de pago por uso (PAYGO), basada en el uso: $0,05 por GB/mes.
 * Para la suscripción anual (BYOL), basada en plazo: desde $0,033 por GB/mes.
 
 
-https://bluexp.netapp.com/pricing["Ver detalles de precios"] .
+https://bluexp.netapp.com/pricing["Ver detalles de precios"].
 
 Al agrupar datos fríos en niveles en un sistema NetApp StorageGRID (nube privada), no hay ningún costo.
 
@@ -168,7 +168,7 @@ Sí. Controlar https://aws.amazon.com/s3/pricing/["Precios de Amazon S3"] , http
 
 === ¿Cómo puedo estimar el ahorro de mis volúmenes y obtener un informe de datos fríos antes de habilitar la organización en niveles en la nube?
 
-Para obtener una estimación, agregue su clúster ONTAP a la consola de NetApp e inspecciónelo a través de la página Clústeres de niveles de nube.  Seleccione *Calcular ahorros potenciales por niveles* para el clúster para iniciar el https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de TCO de niveles de nube"^] para ver cuánto dinero puedes ahorrar.
+Para obtener una estimación, agregue su clúster ONTAP a la NetApp Console e inspecciónelo a través de la página Clústeres de niveles de nube.  Seleccione *Calcular ahorros potenciales por niveles* para el clúster para iniciar el https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de TCO de niveles de nube"^] para ver cuánto dinero puedes ahorrar.
 
 
 
@@ -210,7 +210,7 @@ Sí. La organización en niveles de la nube se puede configurar para organizar e
 
 === ¿Qué pasa con Cloud Volumes ONTAP?
 
-Si tiene sistemas Cloud Volumes ONTAP , los encontrará en la página Clústeres de niveles de nube para que obtenga una vista completa de los niveles de datos en su infraestructura de nube híbrida.  Sin embargo, los sistemas Cloud Volumes ONTAP son de solo lectura desde Cloud Tiering.  No es posible configurar la organización en niveles de datos en Cloud Volumes ONTAP desde Cloud Tiering. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html["Puede configurar la organización en niveles para los sistemas Cloud Volumes ONTAP desde el sistema ONTAP en la consola de NetApp"^] .
+Si tiene sistemas Cloud Volumes ONTAP , los encontrará en la página Clústeres de niveles de nube para que obtenga una vista completa de los niveles de datos en su infraestructura de nube híbrida.  Sin embargo, los sistemas Cloud Volumes ONTAP son de solo lectura desde Cloud Tiering.  No es posible configurar la organización en niveles de datos en Cloud Volumes ONTAP desde Cloud Tiering. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html["Puede configurar la organización en niveles para los sistemas Cloud Volumes ONTAP desde el sistema ONTAP en la NetApp Console"^] .
 
 
 
@@ -264,7 +264,7 @@ Sí, puedes. Al configurar la clasificación de datos, tiene la opción de agreg
 
 === ¿Qué clases de almacenamiento S3 son compatibles?
 
-Cloud Tiering admite la organización en niveles de datos en las clases de almacenamiento _Estándar_, _Estándar-Acceso poco frecuente_, _Una zona-Acceso poco frecuente_, _Niveles inteligentes_ y _Recuperación instantánea de Glacier_. Verlink:reference-aws-support.html["Clases de almacenamiento S3 compatibles"] Para más detalles.
+Cloud Tiering admite la organización en niveles de datos en las clases de almacenamiento _Estándar_, _Estándar-Acceso poco frecuente_, _Una zona-Acceso poco frecuente_, _Niveles inteligentes_ y _Recuperación instantánea de Glacier_.  Verlink:reference-aws-support.html["Clases de almacenamiento S3 compatibles"] Para más detalles.
 
 
 
@@ -282,13 +282,13 @@ Sí, la configuración del almacenamiento de objetos compatible con S3 a través
 
 === ¿Qué niveles de acceso de Azure Blob son compatibles?
 
-Cloud Tiering permite la organización en niveles de datos en los niveles de acceso _Hot_ o _Cool_ para sus datos inactivos. Verlink:reference-azure-support.html["Niveles de acceso de Azure Blob compatibles"] Para más detalles.
+Cloud Tiering permite la organización en niveles de datos en los niveles de acceso _Hot_ o _Cool_ para sus datos inactivos.  Verlink:reference-azure-support.html["Niveles de acceso de Azure Blob compatibles"] Para más detalles.
 
 
 
 === ¿Qué clases de almacenamiento son compatibles con Google Cloud Storage?
 
-Cloud Tiering admite la organización en niveles de datos en las clases de almacenamiento _Standard_, _Nearline_, _Coldline_ y _Archive_. Verlink:reference-google-support.html["Clases de almacenamiento de Google Cloud compatibles"] Para más detalles.
+Cloud Tiering admite la organización en niveles de datos en las clases de almacenamiento _Standard_, _Nearline_, _Coldline_ y _Archive_.  Verlink:reference-google-support.html["Clases de almacenamiento de Google Cloud compatibles"] Para más detalles.
 
 
 
@@ -356,7 +356,7 @@ Las siguientes preguntas se relacionan con el agente de consola.
 
 === ¿Qué es el agente de consola?
 
-El agente de consola es un software que se ejecuta en una instancia de cómputo, ya sea dentro de su cuenta en la nube o en sus instalaciones, y que permite que la consola de NetApp administre de forma segura los recursos de la nube.  Para utilizar el servicio Cloud Tiering, debe implementar un agente.
+El agente de consola es un software que se ejecuta en una instancia de cómputo, ya sea dentro de su cuenta en la nube o en sus instalaciones, y que permite que la NetApp Console administre de forma segura los recursos de la nube. Para utilizar el servicio Cloud Tiering, debe implementar un agente.
 
 
 
@@ -384,7 +384,7 @@ Sí. Debe tener una cuenta antes de poder definir el almacenamiento de objetos q
 
 === ¿Cuáles son las implicaciones si falla el agente de consola?
 
-En caso de falla de un agente, solo se ve afectada la visibilidad de los entornos escalonados.  Todos los datos son accesibles y los datos fríos recientemente identificados se agrupan automáticamente en niveles de almacenamiento de objetos.
+En caso de falla de un agente, solo se ve afectada la visibilidad de los entornos estratificados.  Todos los datos son accesibles y los datos fríos recientemente identificados se agrupan automáticamente en niveles de almacenamiento de objetos.
 
 
 
@@ -402,7 +402,7 @@ Hay cuatro políticas de niveles:
 * Todos los datos del usuario (Todos): clasifica todos los datos como fríos y mueve inmediatamente todo el volumen al almacenamiento de objetos.
 
 
-link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles"] .
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles"].
 
 
 
@@ -527,9 +527,9 @@ Sí. Se debe configurar un LIF entre clústeres en un puerto Ethernet, en cada n
 
 === ¿Qué permisos se requieren?
 
-* link:task-tiering-onprem-aws.html#set-up-s3-permissions["Para Amazon, se requieren permisos para administrar el bucket S3"] .
-* Para Azure, no se necesitan permisos adicionales además de los que debe proporcionar a la consola de NetApp .
-* link:task-tiering-onprem-gcp.html#preparing-google-cloud-storage["Para Google Cloud, se necesitan permisos de administrador de almacenamiento para una cuenta de servicio que tenga claves de acceso al almacenamiento"] .
-* link:task-tiering-onprem-storagegrid.html#preparing-storagegrid["Para StorageGRID, se necesitan permisos S3"] .
-* link:task-tiering-onprem-s3-compat.html#preparing-s3-compatible-object-storage["Para el almacenamiento de objetos compatible con S3, se necesitan permisos S3"] .
+* link:task-tiering-onprem-aws.html#set-up-s3-permissions["Para Amazon, se requieren permisos para administrar el bucket S3"].
+* Para Azure, no se necesitan permisos adicionales además de los que debe proporcionar a la NetApp Console.
+* link:task-tiering-onprem-gcp.html#preparing-google-cloud-storage["Para Google Cloud, se necesitan permisos de administrador de almacenamiento para una cuenta de servicio que tenga claves de acceso al almacenamiento"].
+* link:task-tiering-onprem-storagegrid.html#preparing-storagegrid["Para StorageGRID, se necesitan permisos S3"].
+* link:task-tiering-onprem-s3-compat.html#preparing-s3-compatible-object-storage["Para el almacenamiento de objetos compatible con S3, se necesitan permisos S3"].
 

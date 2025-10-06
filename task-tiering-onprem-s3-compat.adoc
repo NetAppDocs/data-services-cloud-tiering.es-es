@@ -36,7 +36,7 @@ Comience rápidamente siguiendo estos pasos o desplácese hacia abajo hasta las 
 Necesitarás lo siguiente:
 
 [role="quick-margin-list"]
-* Un clúster ONTAP local de origen que ejecuta ONTAP 9.8 o posterior que haya agregado a la consola de NetApp y una conexión a través de un puerto especificado por el usuario al almacenamiento de objetos de destino compatible con S3. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+* Un clúster ONTAP local de origen que ejecuta ONTAP 9.8 o posterior que haya agregado a la NetApp Console y una conexión a través de un puerto especificado por el usuario al almacenamiento de objetos de destino compatible con S3. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
 * El FQDN, la clave de acceso y la clave secreta del servidor de almacenamiento de objetos para que el clúster ONTAP pueda acceder al depósito.
 * Un agente de consola instalado en sus instalaciones.
 * Red para el agente que habilita una conexión HTTPS saliente al clúster ONTAP de origen, al almacenamiento de objetos compatible con S3 y al servicio Cloud Tiering.
@@ -52,7 +52,7 @@ Pague por Cloud Tiering a través de una suscripción de pago por uso de su prov
 
 [role="quick-margin-list"]
 * Para suscribirse a la oferta PAYGO desde el https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa["Mercado de AWS"^] , https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Azure Marketplace"^] , o https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved["Mercado de GCP"^] , seleccione *Suscribirse* y siga las instrucciones.
-* Para pagar utilizando una licencia BYOL de Cloud Tiering, envíe un correo electrónico a:ng-cloud-tiering@netapp.com?subject=Licensing[contáctenos si necesita comprar una] y luegolink:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["agregarlo a la consola de NetApp"^] . .
+* Para pagar utilizando una licencia BYOL de Cloud Tiering, envíe un correo electrónico a:ng-cloud-tiering@netapp.com?subject=Licensing[contáctenos si necesita comprar una] y luegolink:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["agregarlo a la NetApp Console"^] . .
 
 
 
@@ -70,7 +70,7 @@ NOTE: La comunicación entre el agente y el servidor de almacenamiento de objeto
 
 
 
-=== Prepare sus clústeres ONTAP
+=== Prepare sus clústeres de ONTAP
 
 Los clústeres ONTAP de origen deben cumplir los siguientes requisitos al organizar los datos en niveles de almacenamiento de objetos compatible con S3.
 
@@ -106,7 +106,7 @@ TIP: Cloud Tiering admite volúmenes FlexVol y FlexGroup .
 
 Debe agregar su sistema ONTAP local a la consola antes de poder comenzar a organizar en niveles los datos fríos.
 
-https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^].
 
 
 
@@ -165,7 +165,7 @@ Asegúrese de que el agente tenga las conexiones de red necesarias.
 Después de preparar su entorno, comience a organizar en niveles los datos inactivos de su primer clúster.
 
 .Lo que necesitarás
-* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Un sistema local agregado a la consola de NetApp"^] .
+* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Un sistema local agregado a la NetApp Console"^].
 * El FQDN del servidor de almacenamiento de objetos compatible con S3 y el puerto que se utilizará para las comunicaciones HTTPS.
 * Una clave de acceso y una clave secreta que tiene los permisos S3 necesarios.
 
@@ -207,7 +207,7 @@ image:screenshot_tiering_initial_volumes.png["Una captura de pantalla que muestr
 
 . En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
 +
-link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"] .
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"].
 
 +
 image:screenshot_tiering_initial_policy_settings.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]
@@ -215,7 +215,7 @@ image:screenshot_tiering_initial_policy_settings.png["Una captura de pantalla qu
 
 
 .¿Que sigue?
-link:task-licensing-cloud-tiering.html["Asegúrese de suscribirse al servicio Cloud Tiering"] .
+link:task-licensing-cloud-tiering.html["Asegúrese de suscribirse al servicio Cloud Tiering"].
 
 Puede revisar información sobre los datos activos e inactivos en el clúster. link:task-managing-tiering.html["Obtenga más información sobre cómo administrar su configuración de niveles"] .
 

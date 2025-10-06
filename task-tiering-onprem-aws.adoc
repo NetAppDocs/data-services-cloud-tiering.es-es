@@ -38,7 +38,7 @@ Si ya tiene el agente de consola implementado en su VPC de AWS o en sus instalac
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]Prepare su clúster ONTAP local
 [role="quick-margin-para"]
-Descubra su clúster ONTAP en la consola de NetApp , verifique que el clúster cumpla con los requisitos mínimos y personalice la configuración de red para que el clúster pueda conectarse a AWS S3.
+Descubra su clúster ONTAP en la NetApp Console, verifique que el clúster cumpla con los requisitos mínimos y personalice la configuración de red para que el clúster pueda conectarse a AWS S3.
 
 [role="quick-margin-para"]
 <<Prepare su clúster ONTAP,Descubra cómo preparar su clúster ONTAP local.>>
@@ -63,7 +63,7 @@ Una vez finalizada su prueba gratuita, pague Cloud Tiering a través de una susc
 
 [role="quick-margin-list"]
 * Para suscribirse desde AWS Marketplace, https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa["ir a la oferta del Marketplace"^] , seleccione *Suscribirse* y siga las instrucciones.
-* Para pagar utilizando una licencia BYOL de Cloud Tiering, envíe un correo electrónico a:ng-cloud-tiering@netapp.com?subject=Licensing[contáctenos si necesita comprar una] y luegolink:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["agregarlo a la consola de NetApp"] .
+* Para pagar utilizando una licencia BYOL de Cloud Tiering, envíe un correo electrónico a:ng-cloud-tiering@netapp.com?subject=Licensing[contáctenos si necesita comprar una] y luegolink:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["agregarlo a la NetApp Console"] .
 
 
 
@@ -91,13 +91,13 @@ NOTE: La comunicación entre un agente y S3 es solo para la configuración del a
 
 == Prepare su agente de consola
 
-El agente habilita capacidades de niveles desde la consola de NetApp .  Se requiere un agente para organizar en niveles sus datos inactivos de ONTAP .
+El agente habilita capacidades de niveles desde la NetApp Console.  Se requiere un agente para organizar en niveles sus datos inactivos de ONTAP .
 
 
 
 === Crear o cambiar agentes
 
-Si ya tiene un agente implementado en su AWS VPC o en sus instalaciones, entonces está todo listo.  De lo contrario, deberá crear un agente en cualquiera de esas ubicaciones para organizar los datos de ONTAP en el almacenamiento de AWS S3.  No puede utilizar un agente que esté implementado en otro proveedor de nube.
+Si ya tiene un agente implementado en su VPC de AWS o en sus instalaciones, entonces está todo listo.  De lo contrario, deberá crear un agente en cualquiera de esas ubicaciones para almacenar los datos de ONTAP en el almacenamiento de AWS S3.  No puede utilizar un agente que esté implementado en otro proveedor de nube.
 
 * https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Obtenga más información sobre los agentes de consola"^]
 * https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["Implementación de un agente en AWS"^]
@@ -178,11 +178,11 @@ Todos los LIF entre clústeres dentro del espacio IP deben tener acceso al almac
 
 
 
-=== Descubra su clúster ONTAP en la consola de NetApp
+=== Descubra su clúster ONTAP en la NetApp Console
 
-Debe descubrir su clúster ONTAP local en la consola de NetApp antes de poder comenzar a organizar en niveles los datos fríos en el almacenamiento de objetos.  Necesitará saber la dirección IP de administración del clúster y la contraseña de la cuenta de usuario administrador para agregar el clúster.
+Debe descubrir su clúster ONTAP local en la NetApp Console antes de poder comenzar a organizar en niveles los datos fríos en el almacenamiento de objetos.  Necesitará saber la dirección IP de administración del clúster y la contraseña de la cuenta de usuario administrador para agregar el clúster.
 
-https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^].
 
 
 
@@ -190,7 +190,7 @@ https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["A
 
 Cuando configura la clasificación de datos para un nuevo clúster, se le pregunta si desea que el servicio cree un bucket S3 o si desea seleccionar un bucket S3 existente en la cuenta de AWS donde está configurado el agente.  La cuenta de AWS debe tener permisos y una clave de acceso que pueda ingresar en Cloud Tiering.  El clúster ONTAP utiliza la clave de acceso para organizar los datos dentro y fuera de S3.
 
-De manera predeterminada, la organización en niveles de la nube crea el depósito para usted.  Si desea utilizar su propio depósito, puede crear uno antes de iniciar el asistente de activación de niveles y luego seleccionar ese depósito en el asistente. https://docs.netapp.com/us-en/bluexp-s3-storage/task-add-s3-bucket.html["Descubra cómo crear depósitos S3 desde la consola de NetApp"^] .  El depósito debe usarse exclusivamente para almacenar datos inactivos de sus volúmenes; no puede usarse para ningún otro propósito.  El depósito S3 debe estar en unlink:reference-aws-support.html#supported-aws-regions["región que admite la organización en niveles de la nube"] .
+De manera predeterminada, la organización en niveles de la nube crea el depósito para usted.  Si desea utilizar su propio depósito, puede crear uno antes de iniciar el asistente de activación de niveles y luego seleccionar ese depósito en el asistente. https://docs.netapp.com/us-en/bluexp-s3-storage/task-add-s3-bucket.html["Descubra cómo crear depósitos S3 desde la NetApp Console"^] .  El depósito debe usarse exclusivamente para almacenar datos inactivos de sus volúmenes; no puede usarse para ningún otro propósito.  El depósito S3 debe estar en unlink:reference-aws-support.html#supported-aws-regions["región que admite la organización en niveles de la nube"] .
 
 
 NOTE: Si planea configurar Cloud Tiering para usar una clase de almacenamiento de menor costo a la que se trasladarán sus datos en niveles después de una cierta cantidad de días, no debe seleccionar ninguna regla de ciclo de vida al configurar el depósito en su cuenta de AWS.  Cloud Tiering gestiona las transiciones del ciclo de vida.
@@ -208,17 +208,17 @@ Necesitarás configurar dos conjuntos de permisos:
 .Pasos
 . *Permisos del agente de consola*:
 +
-** Confirmar que https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html#iam-policies["estos permisos S3"^] son parte del rol de IAM que proporciona permisos al agente.  Deberían haberse incluido de forma predeterminada cuando implementó el agente por primera vez.  De lo contrario, deberá agregar los permisos faltantes. Ver el https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html["Documentación de AWS: Edición de políticas de IAM"^] para obtener instrucciones.
+** Confirmar que https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html#iam-policies["estos permisos S3"^] son parte del rol de IAM que proporciona permisos al agente.  Deberían haberse incluido de forma predeterminada cuando implementó el agente por primera vez.  De lo contrario, deberá agregar los permisos faltantes.  Ver el https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html["Documentación de AWS: Edición de políticas de IAM"^] para obtener instrucciones.
 ** El depósito predeterminado que crea Cloud Tiering tiene el prefijo "fabric-pool".  Si desea utilizar un prefijo diferente para su depósito, deberá personalizar los permisos con el nombre que desee utilizar.  En los permisos de S3 verás una línea `"Resource": ["arn:aws:s3:::fabric-pool*"]` .  Necesitarás cambiar "fabric-pool" por el prefijo que quieras utilizar.  Por ejemplo, si desea utilizar "tiering-1" como prefijo para sus buckets, cambiará esta línea a `"Resource": ["arn:aws:s3:::tiering-1*"]` .
 +
-Si desea utilizar un prefijo diferente para los depósitos que usará para clústeres adicionales en esta misma organización de la consola de NetApp , puede agregar otra línea con el prefijo para otros depósitos. Por ejemplo:
+Si desea utilizar un prefijo diferente para los depósitos que usará para clústeres adicionales en esta misma organización de la NetApp Console , puede agregar otra línea con el prefijo para otros depósitos. Por ejemplo:
 
 +
 `"Resource": ["arn:aws:s3:::tiering-1*"]`
 `"Resource": ["arn:aws:s3:::tiering-2*"]`
 
 +
-Si está creando su propio depósito y no utiliza un prefijo estándar, debe cambiar esta línea a `"Resource": ["arn:aws:s3:::*"]` para que cualquier bucket sea reconocido.  Sin embargo, esto puede exponer todos sus depósitos en lugar de aquellos que ha diseñado para contener datos inactivos de sus volúmenes.
+Si está creando su propio depósito y no utiliza un prefijo estándar, debe cambiar esta línea a `"Resource": ["arn:aws:s3:::*"]` para que cualquier cubo sea reconocido.  Sin embargo, esto puede exponer todos sus depósitos en lugar de aquellos que ha diseñado para contener datos inactivos de sus volúmenes.
 
 
 
@@ -308,7 +308,7 @@ Please enter Certificate: Press <Enter> when done
 Después de preparar su entorno de AWS, comience a organizar en niveles los datos inactivos desde su primer clúster.
 
 .Lo que necesitarás
-* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Un sistema local administrado en la consola"^] .
+* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Un sistema local administrado en la consola"^].
 * Una clave de acceso de AWS para un usuario de IAM que tiene los permisos S3 necesarios.
 
 
@@ -335,7 +335,7 @@ image:screenshot_tiering_aws_s3_bucket.png["Una captura de pantalla que muestra 
 Al utilizar un agente local, debe ingresar el ID de cuenta de AWS que proporciona acceso al depósito S3 existente o al nuevo depósito S3 que se creará.
 
 +
-El prefijo _fabric-pool_ se utiliza de manera predeterminada porque la política de IAM para el agente permite que la instancia realice acciones S3 en depósitos nombrados con ese prefijo exacto.  Por ejemplo, puede nombrar el bucket S3 _fabric-pool-AFF1_, donde AFF1 es el nombre del clúster.  También puedes definir el prefijo para los contenedores utilizados para la clasificación en niveles.  Ver<<Configurar permisos S3,configuración de permisos S3>> para asegurarse de tener permisos de AWS que reconozcan cualquier prefijo personalizado que planee usar.
+El prefijo _fabric-pool_ se usa de manera predeterminada porque la política de IAM para el agente permite que la instancia realice acciones S3 en depósitos nombrados con ese prefijo exacto.  Por ejemplo, puede nombrar el bucket S3 _fabric-pool-AFF1_, donde AFF1 es el nombre del clúster.  También puedes definir el prefijo para los contenedores utilizados para la clasificación en niveles.  Ver<<Configurar permisos S3,configuración de permisos S3>> para asegurarse de tener permisos de AWS que reconozcan cualquier prefijo personalizado que planee usar.
 
 .. *Clase de almacenamiento*: Cloud Tiering administra las transiciones del ciclo de vida de sus datos organizados en niveles.  Los datos comienzan en la clase _Standard_, pero puede crear una regla para aplicar una clase de almacenamiento diferente a los datos después de una cierta cantidad de días.
 +
@@ -366,7 +366,7 @@ También puede configurar el ancho de banda de red disponible para cargar datos 
 
 
 
-. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la clasificación por niveles e inicie la página Política de niveles:
+. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la organización en niveles e inicie la página Política de niveles:
 +
 ** Para seleccionar todos los volúmenes, marque la casilla en la fila del título (image:button_backup_all_volumes.png[""] ) y seleccione *Configurar volúmenes*.
 ** Para seleccionar varios volúmenes, marque la casilla de cada volumen (image:button_backup_1_volume.png[""] ) y seleccione *Configurar volúmenes*.
@@ -378,7 +378,7 @@ image:screenshot_tiering_initial_volumes.png["Una captura de pantalla que muestr
 
 . En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
 +
-link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"] .
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"].
 
 +
 image:screenshot_tiering_initial_policy_settings.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]
@@ -389,7 +389,7 @@ image:screenshot_tiering_initial_policy_settings.png["Una captura de pantalla qu
 Ha configurado exitosamente la clasificación de datos desde los volúmenes del clúster hasta el almacenamiento de objetos S3.
 
 .¿Que sigue?
-link:task-licensing-cloud-tiering.html["Asegúrese de suscribirse al servicio Cloud Tiering"] .
+link:task-licensing-cloud-tiering.html["Asegúrese de suscribirse al servicio Cloud Tiering"].
 
 Puede revisar información sobre los datos activos e inactivos en el clúster. link:task-managing-tiering.html["Obtenga más información sobre cómo administrar su configuración de niveles"] .
 

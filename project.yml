@@ -11,14 +11,13 @@ settings:
   langs: es-es,us-en,de-de,fr-fr,it-it,pt-br,ja-jp,ko-kr,zh-cn,zh-tw
 sidebar:
   entries:
-  - title: Documentación sobre niveles de nube de NetApp
+  - title: Documentación NetApp Cloud Tiering
     url: "/index.html"
   - title: Notas de la versión
     url: "/whats-new.html"
   - title: Empezar
     entries:
-    - title: Obtenga más información sobre la organización en niveles de la nube de
-        NetApp
+    - title: Obtenga más información sobre la NetApp Cloud Tiering
       url: "/concept-cloud-tiering.html"
     - title: Transfiera los datos locales a la nube
       entries:
@@ -36,7 +35,7 @@ sidebar:
       url: "/task-licensing-cloud-tiering.html"
     - title: Preguntas frecuentes
       url: "/faq-cloud-tiering.html"
-  - title: Utilice la organización por niveles en la nube de NetApp
+  - title: Utilice la NetApp Cloud Tiering
     entries:
     - title: Administrar la clasificación de datos
       url: "/task-managing-tiering.html"

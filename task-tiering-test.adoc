@@ -40,5 +40,5 @@ La información que debes proporcionar es la misma que si estuvieras configurand
 . Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Prueba de rendimiento de la nube*.
 . Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Prueba de rendimiento de la nube*.
 . Seleccione un nodo de la lista desplegable.
-. Vea los resultados o vuelva a comprobar el rendimiento.
+. Vea los resultados o vuelva a verificar el rendimiento.
 

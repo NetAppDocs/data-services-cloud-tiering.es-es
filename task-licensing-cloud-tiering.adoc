@@ -18,12 +18,12 @@ Una prueba gratuita de 30 días de NetApp Cloud Tiering comienza cuando configur
 
 Algunas notas antes de seguir leyendo:
 
-* Si ya se ha suscrito a Cloud Tiering (PAYGO) en el mercado de su proveedor de nube, entonces se suscribirá automáticamente a Cloud Tiering también para los sistemas ONTAP locales.  Verá una suscripción activa en la pestaña *Panel local* de niveles de nube.  No necesitarás suscribirte nuevamente.  Verá una suscripción activa en la consola de NetApp .
-* La licencia BYOL Cloud Tiering (anteriormente conocida como licencia "Cloud Tiering") es una licencia _flotante_ que puede usar en múltiples clústeres ONTAP locales en su organización de consola de NetApp .  Esto es diferente (y mucho más fácil) que en el pasado, cuando usted compraba una licencia _FabricPool_ para cada clúster.
+* Si ya se ha suscrito a Cloud Tiering (PAYGO) en el mercado de su proveedor de nube, entonces se suscribirá automáticamente a Cloud Tiering también para los sistemas ONTAP locales.  Verá una suscripción activa en la pestaña *Panel local* de niveles de nube.  No necesitarás suscribirte nuevamente.  Verá una suscripción activa en la NetApp Console.
+* La licencia BYOL Cloud Tiering (anteriormente conocida como licencia "Cloud Tiering") es una licencia _flotante_ que puede usar en múltiples clústeres ONTAP locales en su organización de NetApp Console .  Esto es diferente (y mucho más fácil) que en el pasado, cuando usted compraba una licencia _FabricPool_ para cada clúster.
 * No hay cargos al agrupar datos en niveles en StorageGRID, por lo que no se requiere ni una licencia BYOL ni un registro PAYGO.  Estos datos escalonados no cuentan para la capacidad adquirida en su licencia.
 
 
-link:concept-cloud-tiering.html#pricing-and-licenses["Obtenga más información sobre cómo funcionan las licencias para la distribución por niveles en la nube"] .
+link:concept-cloud-tiering.html#pricing-and-licenses["Obtenga más información sobre cómo funcionan las licencias para la distribución por niveles en la nube"].
 
 
 
@@ -49,10 +49,10 @@ Suscríbase a Cloud Tiering desde AWS Marketplace para configurar una suscripci�
 
 [[subscribe-aws]]
 .Pasos
-. En la consola de NetApp , seleccione *Movilidad > Niveles de nube > Panel local*.
+. En la NetApp Console, seleccione *Movilidad > Niveles de nube > Panel local*.
 . En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Amazon Web Services y luego seleccione *Continuar*.
 . En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Amazon Web Services y luego seleccione *Continuar*.
-. Suscríbete desde el https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4["Mercado de AWS"^] y luego vuelva a iniciar sesión en la consola de NetApp para completar el registro.
+. Suscríbete desde el https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4["Mercado de AWS"^] y luego vuelva a iniciar sesión en la NetApp Console para completar el registro.
 +
 El siguiente vídeo muestra el proceso:
 
@@ -69,10 +69,10 @@ Suscríbase a Cloud Tiering desde Azure Marketplace para configurar una suscripc
 
 [[subscribe-azure]]
 .Pasos
-. En la consola de NetApp , seleccione *Movilidad > Niveles de nube > Panel local*.
+. En la NetApp Console, seleccione *Movilidad > Niveles de nube > Panel local*.
 . En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Microsoft Azure y luego seleccione *Continuar*.
 . En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Microsoft Azure y luego seleccione *Continuar*.
-. Suscríbete desde el https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Azure Marketplace"^] y luego vuelva a iniciar sesión en la consola de NetApp para completar el registro.
+. Suscríbete desde el https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Azure Marketplace"^] y luego vuelva a iniciar sesión en la NetApp Console para completar el registro.
 +
 El siguiente vídeo muestra el proceso:
 
@@ -89,10 +89,10 @@ Suscríbete a Cloud Tiering desde Google Cloud Marketplace para configurar una s
 
 [[subscribe-gcp]]
 .Pasos
-. En la consola de NetApp , seleccione *Movilidad > Niveles de nube > Panel local*.
+. En la NetApp Console, seleccione *Movilidad > Niveles de nube > Panel local*.
 . En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Google Cloud y luego seleccione *Continuar*.
 . En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Google Cloud y luego seleccione *Continuar*.
-. Suscríbete desde el https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project["Mercado de Google Cloud"^] y luego vuelva a iniciar sesión en la consola de NetApp para completar el registro.
+. Suscríbete desde el https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project["Mercado de Google Cloud"^] y luego vuelva a iniciar sesión en la NetApp Console para completar el registro.
 +
 El siguiente vídeo muestra el proceso:
 
@@ -109,7 +109,7 @@ Pague la distribución por niveles de nube anualmente adquiriendo un contrato an
 
 Al organizar datos inactivos en niveles en AWS, puede suscribirse a un contrato anual desde https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri["Página de AWS Marketplace"^] .  Si desea utilizar esta opción, configure su suscripción desde la página de Marketplace y luego https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html#associate-an-aws-subscription["asociar la suscripción con sus credenciales de AWS"^] .
 
-Al organizar datos inactivos en niveles en Azure, puede suscribirse a un contrato anual desde https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-bluexp["Página de Azure Marketplace"^] .  Si desea utilizar esta opción, configure su suscripción desde la página de Marketplace y luego https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html#subscribe["asociar la suscripción con sus credenciales de Azure"^] .
+Al organizar en niveles los datos inactivos en Azure, puede suscribirse a un contrato anual desde https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-bluexp["Página de Azure Marketplace"^] .  Si desea utilizar esta opción, configure su suscripción desde la página de Marketplace y luego https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html#subscribe["asociar la suscripción con sus credenciales de Azure"^] .
 
 Actualmente, no se admiten contratos anuales al realizar niveles en Google Cloud.
 
@@ -117,7 +117,7 @@ Actualmente, no se admiten contratos anuales al realizar niveles en Google Cloud
 
 == Utilice una licencia BYOL de Cloud Tiering
 
-Las licencias Bring-your-own de NetApp ofrecen plazos de 1, 2 o 3 años.  La licencia BYOL *Cloud Tiering* (anteriormente conocida como licencia "Cloud Tiering") es una licencia _flotante_ que puede usar en múltiples clústeres ONTAP locales en su organización de consola NetApp .  La capacidad total de niveles definida en su licencia de Cloud Tiering se comparte entre *todos* sus clústeres locales, lo que hace que la obtención inicial de la licencia y la renovación sean fáciles.  La capacidad mínima para una licencia BYOL por niveles comienza en 10 TiB.
+Las licencias Bring-your-own de NetApp ofrecen plazos de 1, 2 o 3 años.  La licencia BYOL *Cloud Tiering* (anteriormente conocida como licencia "Cloud Tiering") es una licencia _flotante_ que puede usar en múltiples clústeres ONTAP locales en su organización de NetApp Console .  La capacidad total de niveles definida en su licencia de Cloud Tiering se comparte entre *todos* sus clústeres locales, lo que hace que la obtención inicial de la licencia y la renovación sean fáciles.  La capacidad mínima para una licencia BYOL por niveles comienza en 10 TiB.
 
 Si no tiene una licencia de Cloud Tiering, contáctenos para comprar una:
 
@@ -133,7 +133,7 @@ Administra las licencias BYOL de Cloud Tiering en la consola.  Puede agregar nue
 
 === Licencias BYOL de Cloud Tiering a partir de 2021
 
-La nueva licencia *Cloud Tiering* se introdujo en agosto de 2021 para las configuraciones de niveles compatibles con la consola de NetApp mediante el servicio Cloud Tiering.  Actualmente, la consola de NetApp admite la organización en niveles del siguiente almacenamiento en la nube: Amazon S3, Azure Blob Storage, Google Cloud Storage, NetApp StorageGRID y almacenamiento de objetos compatible con S3.
+La nueva licencia *Cloud Tiering* se introdujo en agosto de 2021 para las configuraciones de niveles compatibles con la NetApp Console mediante el servicio Cloud Tiering.  Actualmente, la NetApp Console admite la organización en niveles del siguiente almacenamiento en la nube: Amazon S3, Azure Blob Storage, Google Cloud Storage, NetApp StorageGRID y almacenamiento de objetos compatible con S3.
 
 La licencia * FabricPool* que puede haber usado en el pasado para organizar en niveles los datos locales de ONTAP en la nube se conserva solo para implementaciones de ONTAP en sitios que no tienen acceso a Internet (también conocidos como "sitios oscuros") y para organizar en niveles las configuraciones en IBM Cloud Object Storage.  Si utiliza este tipo de configuración, instalará una licencia de FabricPool en cada clúster mediante el Administrador del sistema o la CLI de ONTAP .
 
@@ -156,10 +156,10 @@ Aquí hay algunas cosas que necesita saber sobre las dos licencias:
 | Es una licencia _flotante_ que puede utilizar en varios clústeres ONTAP locales. | Es una licencia por clúster que usted compra y licencia para _cada_ clúster. 
 
 
-| Está registrado en la consola de NetApp . | Se aplica a clústeres individuales mediante el Administrador del sistema o la CLI de ONTAP . 
+| Está registrado en la NetApp Console. | Se aplica a clústeres individuales mediante el Administrador del sistema o la CLI de ONTAP . 
 
 
-| La configuración y gestión de niveles se realiza a través del servicio Cloud Tiering en la consola de NetApp . | La configuración y gestión de niveles se realiza a través del Administrador del sistema o la CLI de ONTAP . 
+| La configuración y gestión de niveles se realiza a través del servicio Cloud Tiering en la NetApp Console. | La configuración y gestión de niveles se realiza a través del Administrador del sistema o la CLI de ONTAP . 
 
 
 | Una vez configurada la clasificación por niveles, puede utilizar el servicio de clasificación por niveles sin licencia durante 30 días utilizando la prueba gratuita. | Una vez configurado, puedes almacenar en niveles los primeros 10 TB de datos de forma gratuita. 

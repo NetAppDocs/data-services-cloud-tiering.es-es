@@ -11,8 +11,7 @@ indexpage:
   tiles:
   - title: Empezar
     links:
-    - title: Obtenga más información sobre la organización en niveles de la nube de
-        NetApp
+    - title: Obtenga más información sobre la NetApp Cloud Tiering
       url: concept-cloud-tiering.html
     - title: Qué hay de nuevo
       url: whats-new.html
@@ -57,9 +56,9 @@ indexpage:
       url: task-managing-object-storage.html#removing-a-mirror-object-store-from-an-aggregate
   - title: Blogs y comunidad
     links:
-    - title: Consola de NetApp
+    - title: NetApp Console
       url: https://www.netapp.com/console
-    - title: Servicios de datos de NetApp
+    - title: NetApp Data Services
       url: https://www.netapp.com/data-services/
     - title: Comunidad de NetApp
       url: https://community.netapp.com/

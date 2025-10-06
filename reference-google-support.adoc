@@ -31,7 +31,7 @@ Si no elige otra clase de almacenamiento, los datos permanecerán en la clase de
 
 Cuando configura una regla de ciclo de vida de niveles de nube, no debe configurar ninguna regla de ciclo de vida al configurar el depósito en su cuenta de Google.
 
-https://cloud.google.com/storage/docs/storage-classes["Obtenga más información sobre las clases de Google Cloud Storage"^] .
+https://cloud.google.com/storage/docs/storage-classes["Obtenga más información sobre las clases de Google Cloud Storage"^].
 
 
 

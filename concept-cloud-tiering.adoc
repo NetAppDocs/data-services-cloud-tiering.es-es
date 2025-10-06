@@ -4,7 +4,7 @@ permalink: concept-cloud-tiering.html
 keywords: cloud tiering, overview, conceptual, value, features, cost, charging, tiering policies, cooling period, fabricpool, netapp console, console, bluexp 
 summary: El servicio Cloud Tiering de NetApp extiende su centro de datos a la nube al organizar automáticamente en niveles los datos inactivos desde los clústeres ONTAP locales hasta el almacenamiento de objetos.  Esto libera espacio valioso en el clúster para más cargas de trabajo, sin realizar cambios en la capa de aplicación.  La organización de niveles en la nube puede reducir los costos en su centro de datos y le permite cambiar de un modelo CAPEX a un modelo OPEX. 
 ---
-= Obtenga más información sobre la organización en niveles de la nube de NetApp
+= Obtenga más información sobre la NetApp Cloud Tiering
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -18,23 +18,23 @@ NetApp Cloud Tiering extiende su centro de datos a la nube al organizar automát
 
 Cloud Tiering aprovecha las capacidades de _FabricPool_.  FabricPool es una tecnología de NetApp Data Fabric que permite la organización automatizada de datos en niveles para el almacenamiento de objetos de bajo costo.  Los datos activos (calientes) permanecen en el nivel local (agregados ONTAP locales), mientras que los datos inactivos (fríos) se mueven al nivel de la nube, todo ello preservando la eficiencia de los datos de ONTAP .
 
-Originalmente compatible con sistemas AFF, FAS y ONTAP Select con agregados totalmente SSD, a partir de ONTAP 9.8 puede organizar en niveles los datos de agregados que consisten en HDD además de SSD de alto rendimiento. Ver https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html["Las consideraciones y requisitos para utilizar FabricPool"^] Para más detalles.
+Originalmente compatible con sistemas AFF, FAS y ONTAP Select con agregados totalmente SSD, a partir de ONTAP 9.8 puede organizar en niveles los datos de agregados que consisten en HDD además de SSD de alto rendimiento.  Ver https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html["Las consideraciones y requisitos para utilizar FabricPool"^] Para más detalles.
 
 Puede configurar niveles para clústeres de un solo nodo, clústeres configurados para HA, clústeres en configuraciones de Tiering Mirror y configuraciones de MetroCluster mediante FabricPool Mirror.  Las licencias de niveles de nube se comparten entre todos sus clústeres.
 
-https://bluexp.netapp.com/cloud-tiering-service-tco["Utilice la calculadora de TCO de Cloud Tiering para ver cuánto dinero puede ahorrar"^] .
+https://bluexp.netapp.com/cloud-tiering-service-tco["Utilice la calculadora de TCO de Cloud Tiering para ver cuánto dinero puede ahorrar"^].
 
 
 
-== Consola de NetApp
+== NetApp Console
 
-Se puede acceder a NetApp Cloud Tiering a través de la consola de NetApp .
+Se puede acceder a NetApp Cloud Tiering a través de la NetApp Console.
 
-La consola de NetApp proporciona una gestión centralizada de los servicios de datos y almacenamiento de NetApp en entornos locales y en la nube a escala empresarial. La consola es necesaria para acceder y utilizar los servicios de datos de NetApp . Como interfaz de administración, le permite administrar muchos recursos de almacenamiento desde una sola interfaz. Los administradores de la consola pueden controlar el acceso al almacenamiento y los servicios para todos los sistemas dentro de la empresa.
+La NetApp Console proporciona una gestión centralizada de los servicios de datos y almacenamiento de NetApp en entornos locales y en la nube a escala empresarial. La consola es necesaria para acceder y utilizar los servicios de datos de NetApp . Como interfaz de administración, le permite administrar muchos recursos de almacenamiento desde una sola interfaz. Los administradores de la consola pueden controlar el acceso al almacenamiento y los servicios para todos los sistemas dentro de la empresa.
 
-No necesita una licencia o suscripción para comenzar a usar la consola de NetApp y solo incurre en cargos cuando necesita implementar agentes de la consola en su nube para garantizar la conectividad con sus sistemas de almacenamiento o servicios de datos de NetApp . Sin embargo, algunos servicios de datos de NetApp accesibles desde la consola requieren licencia o suscripción.
+No necesita una licencia o suscripción para comenzar a usar la NetApp Console y solo incurre en cargos cuando necesita implementar agentes de la consola en su nube para garantizar la conectividad con sus sistemas de almacenamiento o servicios de datos de NetApp . Sin embargo, algunos servicios de datos de NetApp accesibles desde la consola requieren licencia o suscripción.
 
-Obtenga más información sobre el https://docs.netapp.com/us-en/bluexp-setup-admin/concept-overview.html["Consola de NetApp"] .
+Obtenga más información sobre el https://docs.netapp.com/us-en/bluexp-setup-admin/concept-overview.html["NetApp Console"] .
 
 
 
@@ -52,10 +52,10 @@ Cloud Tiering ofrece automatización, monitoreo, informes y una interfaz de admi
 * Si tiene sistemas Cloud Volumes ONTAP , los encontrará en la página Clústeres para que obtenga una vista completa de la organización de los datos en su infraestructura de nube híbrida.
 
 
-Para obtener más detalles sobre el valor que ofrece Cloud Tiering, https://bluexp.netapp.com/cloud-tiering["Consulte la página de niveles de nube en el sitio web de la consola de NetApp"^] .
+Para obtener más detalles sobre el valor que ofrece Cloud Tiering, https://bluexp.netapp.com/cloud-tiering["Consulte la página de niveles de nube en el sitio web de la NetApp Console"^] .
 
 
-TIP: Los sistemas Cloud Volumes ONTAP son de solo lectura desde Cloud Tiering. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html["La organización en niveles de los sistemas Cloud Volumes ONTAP se configura en la consola de NetApp ."^] .
+TIP: Los sistemas Cloud Volumes ONTAP son de solo lectura desde Cloud Tiering. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html["La organización en niveles para los sistemas Cloud Volumes ONTAP se configura en la NetApp Console."^] .
 
 
 
@@ -99,7 +99,7 @@ Pague la organización por niveles de la nube a través de una suscripción de p
 
 No hay cargos al agrupar datos en niveles en StorageGRID.  No se requiere una licencia BYOL ni registro PAYGO.
 
-https://bluexp.netapp.com/pricing#tiering["Ver detalles de precios"^] .
+https://bluexp.netapp.com/pricing#tiering["Ver detalles de precios"^].
 
 Debido a que Cloud Tiering preserva las eficiencias de almacenamiento del volumen de origen, usted paga al proveedor de la nube los costos de almacenamiento de objetos por los datos en niveles después de las eficiencias de ONTAP (para la menor cantidad de datos después de que se hayan aplicado la deduplicación y la compresión).
 
@@ -131,7 +131,7 @@ Por ejemplo, si tiene una licencia de 10 TB, toda la capacidad que exceda los 10
 
 No se le cobrará nada de su suscripción de pago por uso durante su prueba gratuita o si no ha excedido su licencia BYOL de Cloud Tiering.
 
-link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-paygo-subscription["Aprenda a configurar una suscripción de pago por uso"] .
+link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-paygo-subscription["Aprenda a configurar una suscripción de pago por uso"].
 
 
 
@@ -147,7 +147,7 @@ Actualmente no se admiten contratos anuales al realizar la subscripción a Googl
 
 Traiga su propia licencia comprando una licencia *Cloud Tiering* de NetApp (anteriormente conocida como licencia "Cloud Tiering").  Puede comprar licencias con una duración de 1, 2 o 3 años y especificar cualquier cantidad de capacidad de niveles (a partir de un mínimo de 10 TiB).  La licencia BYOL Cloud Tiering es una licencia _flotante_ que puede usar en múltiples clústeres ONTAP locales.  La capacidad total de niveles que defina en su licencia de Cloud Tiering puede ser utilizada por todos sus clústeres locales.
 
-Después de comprar una licencia de Cloud Tiering, deberá agregar la licencia a la consola de NetApp . link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-byol-license["Vea cómo usar una licencia BYOL de Cloud Tiering"] .
+Después de comprar una licencia de Cloud Tiering, deberá agregar la licencia a la NetApp Console. link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-byol-license["Vea cómo usar una licencia BYOL de Cloud Tiering"] .
 
 Como se indicó anteriormente, le recomendamos que configure una suscripción de pago por uso, incluso si ha comprado una licencia BYOL.
 
@@ -166,7 +166,7 @@ image:diagram_cloud_tiering.png["Una imagen de arquitectura que muestra el servi
 
 A un alto nivel, la organización de la nube en niveles funciona así:
 
-. Descubre tu clúster local desde la consola de NetApp .
+. Puede descubrir su clúster local desde la NetApp Console.
 . Puede configurar la clasificación en niveles proporcionando detalles sobre su almacenamiento de objetos, incluido el contenedor/depósito, una clase de almacenamiento o nivel de acceso y reglas de ciclo de vida para los datos clasificados en niveles.
 . La consola configura ONTAP para utilizar el proveedor de almacenamiento de objetos y descubre la cantidad de datos activos e inactivos en el clúster.
 . Usted elige los volúmenes a organizar en niveles y la política de niveles que se aplicará a esos volúmenes.
@@ -216,10 +216,10 @@ NOTE: Los datos recalentados se vuelven a escribir en el nivel de rendimiento so
 
 
 --
-Todos los datos del usuario (Todos):: Todos los datos (sin incluir los metadatos) se marcan inmediatamente como fríos y se almacenan en niveles en el almacenamiento de objetos lo antes posible.  No es necesario esperar 48 horas para que los nuevos bloques de un volumen se enfríen.  Los bloques ubicados en el volumen antes de que se establezca la política Todo requieren 48 horas para enfriarse.
+Todos los datos del usuario (Todos):: Todos los datos (sin incluir los metadatos) se marcan inmediatamente como fríos y se almacenan en niveles en el almacenamiento de objetos lo antes posible. No es necesario esperar 48 horas para que los nuevos bloques de un volumen se enfríen. Los bloques ubicados en el volumen antes de que se establezca la política Todo requieren 48 horas para enfriarse.
 +
 --
-Si se leen, los bloques de datos fríos en el nivel de nube permanecen fríos y no se vuelven a escribir en el nivel de rendimiento.  Esta política está disponible a partir de ONTAP 9.6.
+Si se leen, los bloques de datos fríos en el nivel de nube permanecen fríos y no se vuelven a escribir en el nivel de rendimiento. Esta política está disponible a partir de ONTAP 9.6.
 
 Tenga en cuenta lo siguiente antes de elegir esta política de niveles:
 

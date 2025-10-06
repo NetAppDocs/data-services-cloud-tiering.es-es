@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-tiering-onprem-storagegrid.html 
 keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, storagegrid, tier to storagegrid, fabricpool storagegrid 
-summary: Libere espacio en sus clústeres ONTAP locales organizando los datos inactivos en niveles en StorageGRID en NetApp Cloud Tiering. 
+summary: Libere espacio en sus clústeres ONTAP locales organizando en niveles los datos inactivos en StorageGRID en NetApp Cloud Tiering. 
 ---
 = Organización de datos en niveles desde clústeres ONTAP locales a StorageGRID en NetApp Cloud Tiering
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Libere espacio en sus clústeres ONTAP locales organizando los datos in
 
 
 [role="lead"]
-Libere espacio en sus clústeres ONTAP locales organizando los datos inactivos en niveles en StorageGRID en NetApp Cloud Tiering.
+Libere espacio en sus clústeres ONTAP locales organizando en niveles los datos inactivos en StorageGRID en NetApp Cloud Tiering.
 
 
 
@@ -27,7 +27,7 @@ Comience rápidamente siguiendo estos pasos o desplácese hacia abajo hasta las 
 Necesitarás lo siguiente:
 
 [role="quick-margin-list"]
-* Un clúster ONTAP local de origen que ejecuta ONTAP 9.4 o posterior que haya agregado a la consola de NetApp y una conexión a través de un puerto especificado por el usuario a StorageGRID. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+* Un clúster ONTAP local de origen que ejecuta ONTAP 9.4 o posterior que haya agregado a la NetApp Console y una conexión a través de un puerto especificado por el usuario a StorageGRID. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
 * StorageGRID 10.3 o posterior con claves de acceso de AWS que tengan permisos S3.
 * Un agente de consola instalado en sus instalaciones.
 * Redes para el agente que habilita una conexión HTTPS saliente al clúster ONTAP , a StorageGRID y al servicio Cloud Tiering.
@@ -35,7 +35,7 @@ Necesitarás lo siguiente:
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]Configurar niveles
 [role="quick-margin-para"]
-En la consola de NetApp , seleccione un sistema local, seleccione *Habilitar* para Niveles de nube y siga las instrucciones para organizar los datos en niveles en StorageGRID.
+En la NetApp Console, seleccione un sistema local, seleccione *Habilitar* para la organización en niveles de nube y siga las instrucciones para organizar los datos en niveles en StorageGRID.
 
 
 
@@ -52,7 +52,7 @@ NOTE: La comunicación entre el agente y StorageGRID es solo para la configuraci
 
 
 
-=== Prepare sus clústeres ONTAP
+=== Prepare sus clústeres de ONTAP
 
 Sus clústeres ONTAP deben cumplir los siguientes requisitos al organizar los datos en niveles en StorageGRID.
 
@@ -65,7 +65,7 @@ Plataformas ONTAP compatibles::
 
 --
 Versión de ONTAP compatible:: ONTAP 9.4 o posterior
-Licencias:: No se requiere una licencia de Cloud Tiering en su organización de NetApp Console, ni tampoco se requiere una licencia de FabricPool en el clúster ONTAP , al organizar los datos en niveles en StorageGRID.
+Licencias:: No se requiere una licencia de Cloud Tiering en su organización de NetApp Console , ni tampoco se requiere una licencia de FabricPool en el clúster ONTAP , al organizar los datos en niveles en StorageGRID.
 Requisitos de red del clúster::
 +
 --
@@ -94,9 +94,9 @@ NOTE: Cloud Tiering admite volúmenes FlexGroup , a partir de ONTAP 9.5.  La con
 
 === Descubra un clúster ONTAP
 
-Debe agregar un sistema ONTAP local a la consola de NetApp antes de poder comenzar a organizar en niveles los datos fríos.
+Debe agregar un sistema ONTAP local a la NetApp Console antes de poder comenzar a organizar en niveles los datos fríos.
 
-https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^].
 
 
 
@@ -159,7 +159,7 @@ Asegúrese de que el agente tenga las conexiones de red necesarias.
 Después de preparar su entorno, comience a organizar en niveles los datos inactivos de su primer clúster.
 
 .Lo que necesitarás
-* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Un sistema local agregado a la consola de NetApp"^] .
+* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Un sistema local agregado a la NetApp Console"^].
 * El FQDN del nodo de puerta de enlace de StorageGRID y el puerto que se utilizará para las comunicaciones HTTPS.
 * Una clave de acceso de AWS que tiene los permisos S3 necesarios.
 
@@ -168,7 +168,7 @@ Después de preparar su entorno, comience a organizar en niveles los datos inact
 . Seleccione el sistema ONTAP local.
 . Haga clic en *Habilitar* para niveles de nube en el panel derecho.
 +
-Si el destino de niveles de StorageGRID existe como un sistema en la consola de NetApp , puede arrastrar el clúster al sistema StorageGRID para iniciar el asistente de configuración.
+Si el destino de niveles de StorageGRID existe como un sistema en la NetApp Console, puede arrastrar el clúster al sistema StorageGRID para iniciar el asistente de configuración.
 
 +
 image:screenshot_setup_tiering_onprem.png["Una captura de pantalla que muestra la opción de configuración por niveles que aparece en el lado derecho de la pantalla después de seleccionar un sistema ONTAP local."]
@@ -194,7 +194,7 @@ También puede configurar el ancho de banda de red disponible para cargar datos 
 
 
 
-. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la clasificación por niveles e inicie la página Política de niveles:
+. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la organización en niveles e inicie la página Política de niveles:
 +
 ** Para seleccionar todos los volúmenes, marque la casilla en la fila del título (image:button_backup_all_volumes.png[""] ) y seleccione *Configurar volúmenes*.
 ** Para seleccionar varios volúmenes, marque la casilla de cada volumen (image:button_backup_1_volume.png[""] ) y seleccione *Configurar volúmenes*.
@@ -210,7 +210,7 @@ image:screenshot_tiering_initial_volumes.png["Una captura de pantalla que muestr
 . En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
 . En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
 +
-link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"] .
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"].
 
 +
 image:screenshot_tiering_initial_policy_settings.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]

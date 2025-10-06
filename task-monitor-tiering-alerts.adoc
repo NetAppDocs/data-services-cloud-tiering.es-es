@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-monitor-tiering-alerts.html 
 keywords: tiering, status, monitor, alert, notification, cloud tiering, bluexp 
-summary: Puede ver el estado de las alertas de niveles en el Centro de notificaciones de la consola de NetApp . 
+summary: Puede ver el estado de las alertas de niveles en el Centro de notificaciones de la NetApp Console . 
 ---
 = Supervisar el estado de las alertas de niveles de NetApp Cloud Tiering
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Puede ver el estado de las alertas de niveles en el Centro de notificac
 
 
 [role="lead"]
-Puede ver el estado de las alertas de niveles de NetApp Cloud Tiering en el Centro de notificaciones de la consola de NetApp .
+Puede ver el estado de las alertas de niveles de NetApp Cloud Tiering en el Centro de notificaciones de la NetApp Console .
 
 El Centro de notificaciones realiza un seguimiento del progreso de los incidentes de niveles para que pueda verificar si se han resuelto o no.  Puede visualizar las notificaciones seleccionando el (image:icon_bell.png["campana de notificación"] ) en la barra de menú de la consola.
 
@@ -24,6 +24,6 @@ Almacene datos adicionales desde el clúster <nombre> al almacenamiento de objet
 
 Esta notificación es una "Recomendación" para mejorar la eficiencia del sistema y reducir los costos de almacenamiento.  Indica que un clúster está agrupando menos del 20 % de sus datos fríos, incluidos los clústeres que no están agrupando datos.  Proporciona un enlace a la https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de ahorro y costo total de propiedad de Cloud Tiering"^] para ayudarle a calcular sus ahorros de costos.
 
-La consola de NetApp no ​​envía un correo electrónico para esta notificación.
+La NetApp Console no ​​envía un correo electrónico para esta notificación.
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["Obtenga más información sobre el Centro de notificaciones"^] .
+https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["Obtenga más información sobre el Centro de notificaciones"^].

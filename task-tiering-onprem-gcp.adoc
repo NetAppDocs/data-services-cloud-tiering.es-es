@@ -27,7 +27,7 @@ Comience rápidamente siguiendo estos pasos o desplácese hacia abajo hasta las 
 Necesitarás lo siguiente:
 
 [role="quick-margin-list"]
-* Un clúster ONTAP local de origen que ejecuta ONTAP 9.6 o posterior que haya agregado a la consola de NetApp y una conexión a través de un puerto especificado por el usuario a Google Cloud Storage. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+* Un clúster ONTAP local de origen que ejecuta ONTAP 9.6 o posterior que haya agregado a la NetApp Console y una conexión a través de un puerto especificado por el usuario a Google Cloud Storage. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
 * Una cuenta de servicio que tiene el rol de administrador de almacenamiento predefinido y claves de acceso al almacenamiento.
 * Un agente de consola instalado en una VPC de Google Cloud Platform.
 * Red para el agente que habilita una conexión HTTPS saliente al clúster ONTAP en su centro de datos, a Google Cloud Storage y al servicio Cloud Tiering.
@@ -35,7 +35,7 @@ Necesitarás lo siguiente:
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]Configurar niveles
 [role="quick-margin-para"]
-En la consola de NetApp , seleccione un sistema local, seleccione *Habilitar* para el servicio de niveles y siga las instrucciones para organizar los datos en niveles en Google Cloud Storage.
+En la NetApp Console, seleccione un sistema local, seleccione *Habilitar* para el servicio de niveles y siga las instrucciones para organizar los datos en niveles en Google Cloud Storage.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]Configurar licencias
 [role="quick-margin-para"]
@@ -43,7 +43,7 @@ Una vez finalizada su prueba gratuita, pague Cloud Tiering a través de una susc
 
 [role="quick-margin-list"]
 * Para suscribirse desde Google Cloud Marketplace, https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved["ir a la oferta del Marketplace"^] , seleccione *Suscribirse* y siga las instrucciones.
-* Para pagar utilizando una licencia BYOL de Cloud Tiering, envíe un correo electrónico a:ng-cloud-tiering@netapp.com?subject=Licensing[contáctenos si necesita comprar una] y luegolink:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["agregarlo a la consola de NetApp"^] .
+* Para pagar utilizando una licencia BYOL de Cloud Tiering, envíe un correo electrónico a:ng-cloud-tiering@netapp.com?subject=Licensing[contáctenos si necesita comprar una] y luegolink:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["agregarlo a la NetApp Console"^] .
 
 
 
@@ -61,7 +61,7 @@ NOTE: La comunicación entre el agente y Google Cloud Storage es solo para la co
 
 
 
-=== Prepare sus clústeres ONTAP
+=== Prepare sus clústeres de ONTAP
 
 Sus clústeres de ONTAP deben cumplir los siguientes requisitos al organizar los datos en niveles en Google Cloud Storage.
 
@@ -105,9 +105,9 @@ NOTE: Cloud Tiering admite volúmenes FlexGroup .  La configuración funciona ig
 
 === Descubra un clúster ONTAP
 
-Debe agregar su sistema ONTAP local a la consola de NetApp antes de poder comenzar a organizar en niveles los datos fríos.
+Debe agregar su sistema ONTAP local a la NetApp Console antes de poder comenzar a organizar en niveles los datos fríos.
 
-https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^].
 
 
 
@@ -150,7 +150,7 @@ Los depósitos de almacenamiento en la nube deben estar en unlink:reference-goog
 NOTE: Si planea configurar Cloud Tiering para usar clases de almacenamiento de menor costo a las que se trasladarán sus datos organizados en niveles después de una cierta cantidad de días, no debe seleccionar ninguna regla de ciclo de vida al configurar el depósito en su cuenta de GCP.  Cloud Tiering gestiona las transiciones del ciclo de vida.
 
 .Pasos
-. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["Cree una cuenta de servicio que tenga el rol de administrador de almacenamiento predefinido"^] .
+. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["Cree una cuenta de servicio que tenga el rol de administrador de almacenamiento predefinido"^].
 . Ir a https://console.cloud.google.com/storage/settings["Configuración de almacenamiento de GCP"^] y crear claves de acceso para la cuenta de servicio:
 +
 .. Seleccione un proyecto y seleccione *Interoperabilidad*.  Si aún no lo ha hecho, seleccione *Habilitar acceso de interoperabilidad*.
@@ -171,7 +171,7 @@ Necesitará ingresar las claves más tarde cuando configure la organización en 
 Después de preparar su entorno de Google Cloud, comience a organizar en niveles los datos inactivos de su primer clúster.
 
 .Lo que necesitarás
-* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Un sistema local agregado a la consola de NetApp"^] .
+* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Un sistema local agregado a la NetApp Console"^].
 * Claves de acceso de almacenamiento para una cuenta de servicio que tiene el rol de administrador de almacenamiento.
 
 
@@ -213,7 +213,7 @@ También puede configurar el ancho de banda de red disponible para cargar datos 
 
 
 . Haga clic en *Continuar* para seleccionar los volúmenes que desea organizar en niveles.
-. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la clasificación por niveles e inicie la página Política de niveles:
+. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la organización en niveles e inicie la página Política de niveles:
 +
 ** Para seleccionar todos los volúmenes, marque la casilla en la fila del título (image:button_backup_all_volumes.png[""] ) y seleccione *Configurar volúmenes*.
 ** Para seleccionar varios volúmenes, marque la casilla de cada volumen (image:button_backup_1_volume.png[""] ) y seleccione *Configurar volúmenes*.
@@ -225,7 +225,7 @@ image:screenshot_tiering_initial_volumes.png["Una captura de pantalla que muestr
 
 . En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
 +
-link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"] .
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"].
 
 +
 image:screenshot_tiering_initial_policy_settings.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]
@@ -236,7 +236,7 @@ image:screenshot_tiering_initial_policy_settings.png["Una captura de pantalla qu
 Ha configurado correctamente la clasificación de datos desde los volúmenes del clúster hasta el almacenamiento de objetos de Google Cloud.
 
 .¿Que sigue?
-link:task-licensing-cloud-tiering.html["Asegúrese de suscribirse al servicio Cloud Tiering"] .
+link:task-licensing-cloud-tiering.html["Asegúrese de suscribirse al servicio Cloud Tiering"].
 
 Puede revisar información sobre los datos activos e inactivos en el clúster. link:task-managing-tiering.html["Obtenga más información sobre cómo administrar su configuración de niveles"] .
 

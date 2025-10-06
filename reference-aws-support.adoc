@@ -32,7 +32,7 @@ Si no elige otra clase de almacenamiento, los datos permanecerán en la clase de
 
 Cuando configura una regla de ciclo de vida de niveles de nube, no debe configurar ninguna regla de ciclo de vida al configurar el depósito en su cuenta de AWS.
 
-https://aws.amazon.com/s3/storage-classes/["Obtenga más información sobre las clases de almacenamiento S3"^] .
+https://aws.amazon.com/s3/storage-classes/["Obtenga más información sobre las clases de almacenamiento S3"^].
 
 
 

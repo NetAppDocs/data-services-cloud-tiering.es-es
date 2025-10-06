@@ -26,7 +26,7 @@ Si no elige el nivel de acceso _Cool_, los datos permanecerán en el nivel de ac
 
 Cuando configura una regla de ciclo de vida de niveles de nube, no debe configurar ninguna regla de ciclo de vida al configurar el contenedor en su cuenta de Azure.
 
-https://docs.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview["Obtenga información sobre los niveles de acceso de Azure Blob"^] .
+https://docs.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview["Obtenga información sobre los niveles de acceso de Azure Blob"^].
 
 
 

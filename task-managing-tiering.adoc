@@ -50,7 +50,7 @@ image:screenshot_tiering_aiq_fabricpool_info.png["Una captura de pantalla que mu
 Configure la clasificación de datos para volúmenes adicionales en cualquier momento, por ejemplo, después de crear un nuevo volumen.
 
 
-TIP: No es necesario configurar el almacenamiento de objetos porque ya estaba configurado cuando configuró inicialmente la organización en niveles para el clúster.  ONTAP agrupa los datos inactivos desde cualquier volumen adicional al mismo almacén de objetos.
+TIP: No es necesario configurar el almacenamiento de objetos porque ya estaba configurado cuando configuró inicialmente la organización en niveles para el clúster.  ONTAP agrupa los datos inactivos de cualquier volumen adicional en el mismo almacén de objetos.
 
 .Pasos
 . Desde el menú de navegación de la izquierda, seleccione *Movilidad > Niveles de nube*.
@@ -58,7 +58,7 @@ TIP: No es necesario configurar el almacenamiento de objetos porque ya estaba co
 +
 image:screenshot_tiering_tier_volumes_button.png["Una captura de pantalla que muestra cómo seleccionar el botón Volúmenes de niveles para un clúster."]
 
-. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la clasificación por niveles e inicie la página Política de niveles:
+. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la organización en niveles e inicie la página Política de niveles:
 +
 ** Para seleccionar todos los volúmenes, marque la casilla en la fila del título (image:button_backup_all_volumes.png[""] ) y seleccione *Configurar volúmenes*.
 ** Para seleccionar varios volúmenes, marque la casilla de cada volumen (image:button_backup_1_volume.png[""] ) y seleccione *Configurar volúmenes*.
@@ -71,7 +71,7 @@ image:screenshot_tiering_tier_volumes.png["Una captura de pantalla que muestra c
 . En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
 . En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
 +
-link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"] .
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"].
 
 +
 image:screenshot_tiering_policy_settings.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]
@@ -94,7 +94,7 @@ Cambiar la política de niveles de un volumen cambia la forma en que ONTAP organ
 . Haga clic en la fila de un volumen, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento y seleccione *Aplicar*.
 . Haga clic en la fila de un volumen, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento y seleccione *Aplicar*.
 +
-link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"] .
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"].
 
 +
 image:screenshot_tiering_policy_settings.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]
@@ -218,11 +218,11 @@ image:screenshot_tiering_modify_aggregate.png["Una captura de pantalla que muest
 
 == Arreglar la salud operativa
 
-Si se producen fallas, Cloud Tiering muestra un estado de salud operativa "Fallido" en el Panel de control del clúster.  La salud refleja el estado del sistema ONTAP y de la consola de NetApp .
+Si se producen fallas, Cloud Tiering muestra un estado de salud operativa "Fallido" en el Panel de control del clúster.  La salud refleja el estado del sistema ONTAP y de la NetApp Console.
 
 .Pasos
 . Identifique cualquier clúster que tenga un estado operativo de "Fallido".
-. Coloque el cursor sobre el ícono informativo "i" para ver el motivo de la falla.
+. Coloque el cursor sobre el ícono informativo "i" para ver el motivo del error.
 . Corrija el problema:
 +
 .. Verifique que el clúster ONTAP esté operativo y que tenga una conexión entrante y saliente con su proveedor de almacenamiento de objetos.
@@ -284,5 +284,5 @@ image:screenshot_tiering_search for_cluster.png["Una captura de pantalla que mue
 +
 Cloud Tiering muestra el nombre del agente si puede encontrar el clúster.
 
-. https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors["Cambiar al agente y configurar la organización en niveles para el clúster"^] .
+. https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors["Cambiar al agente y configurar la organización en niveles para el clúster"^].
 
