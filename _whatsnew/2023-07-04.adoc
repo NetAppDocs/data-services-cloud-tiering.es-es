@@ -1,0 +1,17 @@
+= Ajustar el ancho de banda para transferir datos inactivos
+:allow-uri-read: 
+
+
+
+
+=== Ajustar el ancho de banda para transferir datos inactivos
+
+Cuando activa la organización en niveles en la nube, ONTAP puede usar una cantidad ilimitada de ancho de banda de red para transferir los datos inactivos de los volúmenes del clúster al almacenamiento de objetos.  Si nota que el tráfico en niveles afecta las cargas de trabajo normales de los usuarios, puede limitar la cantidad de ancho de banda que se puede usar durante la transferencia. https://docs.netapp.com/us-en/bluexp-tiering/task-managing-tiering.html#changing-the-network-bandwidth-available-to-upload-inactive-data-to-object-storage["Más información"] .
+
+
+
+=== Evento de niveles que se muestra en el Centro de notificaciones
+
+El evento de niveles "Asigne datos adicionales desde el clúster <nombre> al almacenamiento de objetos para aumentar la eficiencia del almacenamiento" ahora aparece como una notificación cuando un clúster está agrupando en niveles menos del 20 % de sus datos fríos, incluidos los clústeres que no están agrupando en niveles ningún dato.
+
+Esta notificación es una "Recomendación" para ayudar a que sus sistemas sean más eficientes y ahorrar en costos de almacenamiento.  Proporciona un enlace a la https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de ahorro y costo total de propiedad de Cloud Tiering"^] para ayudarle a calcular sus ahorros de costos.

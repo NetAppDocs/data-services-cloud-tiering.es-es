@@ -1,0 +1,223 @@
+---
+sidebar: sidebar 
+permalink: task-tiering-onprem-storagegrid.html 
+keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, storagegrid, tier to storagegrid, fabricpool storagegrid 
+summary: Libere espacio en sus clústeres ONTAP locales organizando los datos inactivos en niveles en StorageGRID en NetApp Cloud Tiering. 
+---
+= Organización de datos en niveles desde clústeres ONTAP locales a StorageGRID en NetApp Cloud Tiering
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Libere espacio en sus clústeres ONTAP locales organizando los datos inactivos en niveles en StorageGRID en NetApp Cloud Tiering.
+
+
+
+== Inicio rápido
+
+Comience rápidamente siguiendo estos pasos o desplácese hacia abajo hasta las secciones restantes para obtener detalles completos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]Prepárese para organizar los datos en niveles en StorageGRID
+[role="quick-margin-para"]
+Necesitarás lo siguiente:
+
+[role="quick-margin-list"]
+* Un clúster ONTAP local de origen que ejecuta ONTAP 9.4 o posterior que haya agregado a la consola de NetApp y una conexión a través de un puerto especificado por el usuario a StorageGRID. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+* StorageGRID 10.3 o posterior con claves de acceso de AWS que tengan permisos S3.
+* Un agente de consola instalado en sus instalaciones.
+* Redes para el agente que habilita una conexión HTTPS saliente al clúster ONTAP , a StorageGRID y al servicio Cloud Tiering.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]Configurar niveles
+[role="quick-margin-para"]
+En la consola de NetApp , seleccione un sistema local, seleccione *Habilitar* para Niveles de nube y siga las instrucciones para organizar los datos en niveles en StorageGRID.
+
+
+
+== Requisitos
+
+Verifique el soporte para su clúster ONTAP , configure su red y prepare su almacenamiento de objetos.
+
+La siguiente imagen muestra cada componente y las conexiones que debes preparar entre ellos:
+
+image:diagram_cloud_tiering_storagegrid.png["Una imagen de arquitectura que muestra el servicio Cloud Tiering con una conexión al agente en sus instalaciones, el agente con una conexión a su clúster ONTAP y una conexión entre el clúster ONTAP y el almacenamiento de objetos.  Los datos activos residen en el clúster ONTAP , mientras que los datos inactivos residen en el almacenamiento de objetos."]
+
+
+NOTE: La comunicación entre el agente y StorageGRID es solo para la configuración del almacenamiento de objetos.
+
+
+
+=== Prepare sus clústeres ONTAP
+
+Sus clústeres ONTAP deben cumplir los siguientes requisitos al organizar los datos en niveles en StorageGRID.
+
+Plataformas ONTAP compatibles::
++
+--
+* Al usar ONTAP 9.8 y versiones posteriores: puede organizar en niveles los datos de los sistemas AFF o FAS con agregados totalmente SSD o agregados totalmente HDD.
+* Al utilizar ONTAP 9.7 y versiones anteriores: puede organizar en niveles los datos de los sistemas AFF o de los sistemas FAS con agregados totalmente SSD.
+
+
+--
+Versión de ONTAP compatible:: ONTAP 9.4 o posterior
+Licencias:: No se requiere una licencia de Cloud Tiering en su organización de NetApp Console, ni tampoco se requiere una licencia de FabricPool en el clúster ONTAP , al organizar los datos en niveles en StorageGRID.
+Requisitos de red del clúster::
++
+--
+* El clúster ONTAP inicia una conexión HTTPS a través de un puerto especificado por el usuario al nodo de puerta de enlace StorageGRID (el puerto se puede configurar durante la configuración de niveles).
++
+ONTAP lee y escribe datos hacia y desde el almacenamiento de objetos.  El almacenamiento de objetos nunca se inicia, simplemente responde.
+
+* Se requiere una conexión entrante del agente, que debe residir en sus instalaciones.
++
+No se requiere una conexión entre el clúster y el servicio Cloud Tiering.
+
+* Se requiere un LIF entre clústeres en cada nodo de ONTAP que aloje los volúmenes que desea organizar en niveles.  El LIF debe estar asociado con el _IPspace_ que ONTAP debe usar para conectarse al almacenamiento de objetos.
++
+Cuando configura la clasificación de datos, Cloud Tiering le solicita el espacio IP que desea utilizar.  Debes elegir el espacio IP con el que está asociado cada LIF.  Ese podría ser el espacio IP "predeterminado" o un espacio IP personalizado que usted creó.  Obtenga más información sobre https://docs.netapp.com/us-en/ontap/networking/create_a_lif.html["LIF"^] y https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html["Espacios IP"^] .
+
+
+
+--
+Volúmenes y agregados admitidos:: La cantidad total de volúmenes que Cloud Tiering puede organizar en niveles puede ser menor que la cantidad de volúmenes en su sistema ONTAP .  Esto se debe a que los volúmenes no se pueden clasificar a partir de algunos agregados.  Consulte la documentación de ONTAP para https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html#functionality-or-features-not-supported-by-fabricpool["funcionalidad o características no compatibles con FabricPool"^] .
+
+
+
+NOTE: Cloud Tiering admite volúmenes FlexGroup , a partir de ONTAP 9.5.  La configuración funciona igual que cualquier otro volumen.
+
+
+
+=== Descubra un clúster ONTAP
+
+Debe agregar un sistema ONTAP local a la consola de NetApp antes de poder comenzar a organizar en niveles los datos fríos.
+
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+
+
+
+=== Preparar StorageGRID
+
+StorageGRID debe cumplir los siguientes requisitos.
+
+Versiones de StorageGRID compatibles:: Se admite StorageGRID 10.3 y versiones posteriores.
+Credenciales S3:: Cuando configura la organización en niveles en StorageGRID, debe proporcionar a Cloud Tiering una clave de acceso S3 y una clave secreta.  Cloud Tiering utiliza las claves para acceder a sus buckets.
++
+--
+Estas claves de acceso deben estar asociadas a un usuario que tenga los siguientes permisos:
+
+[source, json]
+----
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetObject",
+"s3:PutObject",
+"s3:DeleteObject",
+"s3:CreateBucket"
+----
+--
+Control de versiones de objetos:: No debe habilitar el control de versiones de objetos StorageGRID en el depósito de almacenamiento de objetos.
+
+
+
+
+=== Crear o cambiar agentes de consola
+
+El agente de consola es necesario para organizar los datos en niveles en la nube.  Al organizar los datos en niveles en StorageGRID, debe haber un agente disponible en sus instalaciones.
+
+Debe tener el rol de administrador de la organización para crear un agente.
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Conozca a los agentes"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html["Instalar y configurar un agente local"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors["Cambiar entre agentes"^]
+
+
+
+
+=== Preparar la red para el agente de consola
+
+Asegúrese de que el agente tenga las conexiones de red necesarias.
+
+.Pasos
+. Asegúrese de que la red donde está instalado el agente permita las siguientes conexiones:
++
+** Una conexión HTTPS a través del puerto 443 al servicio Cloud Tiering(https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-on-prem.html#endpoints-contacted-for-day-to-day-operations["ver la lista de puntos finales"^] )
+** Una conexión HTTPS a través del puerto 443 a su sistema StorageGRID
+** Una conexión HTTPS a través del puerto 443 a su LIF de administración de clúster ONTAP
+
+
+
+
+
+
+== Agrupe los datos inactivos desde su primer clúster en StorageGRID
+
+Después de preparar su entorno, comience a organizar en niveles los datos inactivos de su primer clúster.
+
+.Lo que necesitarás
+* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Un sistema local agregado a la consola de NetApp"^] .
+* El FQDN del nodo de puerta de enlace de StorageGRID y el puerto que se utilizará para las comunicaciones HTTPS.
+* Una clave de acceso de AWS que tiene los permisos S3 necesarios.
+
+
+.Pasos
+. Seleccione el sistema ONTAP local.
+. Haga clic en *Habilitar* para niveles de nube en el panel derecho.
++
+Si el destino de niveles de StorageGRID existe como un sistema en la consola de NetApp , puede arrastrar el clúster al sistema StorageGRID para iniciar el asistente de configuración.
+
++
+image:screenshot_setup_tiering_onprem.png["Una captura de pantalla que muestra la opción de configuración por niveles que aparece en el lado derecho de la pantalla después de seleccionar un sistema ONTAP local."]
+
+. *Definir nombre de almacenamiento de objetos*: ingrese un nombre para este almacenamiento de objetos.  Debe ser único respecto de cualquier otro almacenamiento de objetos que pueda estar utilizando con agregados en este clúster.
+. *Seleccionar proveedor*: seleccione * StorageGRID* y seleccione *Continuar*.
+. *Seleccionar proveedor*: seleccione * StorageGRID* y seleccione *Continuar*.
+. Complete los pasos en las páginas *Crear almacenamiento de objetos*:
++
+.. *Servidor*: Ingrese el FQDN del nodo de puerta de enlace de StorageGRID , el puerto que ONTAP debe usar para la comunicación HTTPS con StorageGRID y la clave de acceso y la clave secreta de una cuenta que tenga los permisos S3 requeridos.
+.. *Bucket*: agregue un nuevo bucket o seleccione un bucket existente que comience con el prefijo _fabric-pool_ y seleccione *Continuar*.
+.. *Bucket*: agregue un nuevo bucket o seleccione un bucket existente que comience con el prefijo _fabric-pool_ y seleccione *Continuar*.
++
+El prefijo _fabric-pool_ es necesario porque la política de IAM para el agente permite que la instancia realice acciones de S3 en depósitos nombrados con ese prefijo exacto.  Por ejemplo, puede nombrar el bucket S3 _fabric-pool-AFF1_, donde AFF1 es el nombre del clúster.
+
+.. *Red de clúster*: seleccione el espacio IP que ONTAP debe usar para conectarse al almacenamiento de objetos y seleccione *Continuar*.
+.. *Red de clúster*: seleccione el espacio IP que ONTAP debe usar para conectarse al almacenamiento de objetos y seleccione *Continuar*.
++
+Seleccionar el espacio IP correcto garantiza que Cloud Tiering pueda configurar una conexión desde ONTAP al almacenamiento de objetos StorageGRID .
+
++
+También puede configurar el ancho de banda de red disponible para cargar datos inactivos al almacenamiento de objetos definiendo la "Tasa de transferencia máxima".  Seleccione el botón de opción *Limitado* e ingrese el ancho de banda máximo que se puede usar, o seleccione *Ilimitado* para indicar que no hay límite.
+
+
+
+. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la clasificación por niveles e inicie la página Política de niveles:
++
+** Para seleccionar todos los volúmenes, marque la casilla en la fila del título (image:button_backup_all_volumes.png[""] ) y seleccione *Configurar volúmenes*.
+** Para seleccionar varios volúmenes, marque la casilla de cada volumen (image:button_backup_1_volume.png[""] ) y seleccione *Configurar volúmenes*.
+** Para seleccionar un solo volumen, seleccione la fila (oimage:screenshot_edit_icon.gif["editar icono de lápiz"] icono) para el volumen.
+** Para seleccionar todos los volúmenes, marque la casilla en la fila del título (image:button_backup_all_volumes.png[""] ) y seleccione *Configurar volúmenes*.
+** Para seleccionar varios volúmenes, marque la casilla de cada volumen (image:button_backup_1_volume.png[""] ) y seleccione *Configurar volúmenes*.
+** Para seleccionar un solo volumen, seleccione la fila (oimage:screenshot_edit_icon.gif["editar icono de lápiz"] icono) para el volumen.
++
+image:screenshot_tiering_initial_volumes.png["Una captura de pantalla que muestra cómo seleccionar un solo volumen, varios volúmenes o todos los volúmenes, y el botón modificar volúmenes seleccionados."]
+
+
+
+. En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
+. En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
++
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"] .
+
++
+image:screenshot_tiering_initial_policy_settings.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]
+
+
+
+.¿Que sigue?
+Puede revisar información sobre los datos activos e inactivos en el clúster. link:task-managing-tiering.html["Obtenga más información sobre cómo administrar su configuración de niveles"] .
+
+También puede crear almacenamiento de objetos adicional en los casos en los que desee organizar datos de ciertos agregados en un clúster en diferentes almacenes de objetos.  O si planea utilizar FabricPool Mirroring donde sus datos escalonados se replican en un almacén de objetos adicional. link:task-managing-object-storage.html["Obtenga más información sobre la gestión de almacenes de objetos"] .

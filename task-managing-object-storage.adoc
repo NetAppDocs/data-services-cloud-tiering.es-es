@@ -1,0 +1,168 @@
+---
+sidebar: sidebar 
+permalink: task-managing-object-storage.html 
+keywords: object storage, mirror object storage, create object storage, remove object storage, swap object storage, display object storage, license 
+summary: Una vez que haya configurado sus clústeres ONTAP locales para organizar los datos en niveles de un almacenamiento de objetos en particular, puede realizar tareas de almacenamiento de objetos adicionales en NetApp Cloud Tiering.  Puede agregar un nuevo almacenamiento de objetos, reflejar sus datos estratificados en un almacenamiento de objetos secundario, intercambiar el almacenamiento de objetos primario y reflejado, eliminar un almacenamiento de objetos reflejado de un agregado y más. 
+---
+= Administrar el almacenamiento de objetos utilizado para la organización en niveles de datos en NetApp Cloud Tiering
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Una vez que haya configurado sus clústeres ONTAP locales para organizar los datos en niveles en un almacenamiento de objetos en particular, puede realizar tareas de almacenamiento de objetos adicionales mediante NetApp Cloud Tiering.  Puede agregar un nuevo almacenamiento de objetos, reflejar sus datos estratificados en un almacenamiento de objetos secundario, intercambiar el almacenamiento de objetos primario y reflejado, eliminar un almacenamiento de objetos reflejado de un agregado y más.
+
+
+
+== Ver almacenes de objetos configurados para un clúster
+
+Puede ver todos los almacenes de objetos que se han configurado para cada clúster y a qué agregados están conectados.
+
+.Pasos
+. Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Información del almacén de objetos*.
+. Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Información del almacén de objetos*.
+. Revise los detalles sobre los almacenes de objetos.
++
+Este ejemplo muestra un almacén de objetos Amazon S3 y Azure Blob adjunto a diferentes agregados en un clúster.
+
++
+image:screenshot_tiering_object_store_view.png["Una captura de pantalla que muestra la información de almacenamiento de objetos, que detalla la capacidad total utilizada, el agregado adjunto al almacén de objetos, el nombre del almacén de objetos y más información."]
+
+
+
+
+
+== Agregar un nuevo almacén de objetos
+
+Puede agregar un nuevo almacén de objetos para agregados en su clúster.  Después de crearlo, puedes adjuntarlo a un agregado.
+
+.Pasos
+. Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Información del almacén de objetos*.
+. Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Información del almacén de objetos*.
+. Desde la página Información del almacén de objetos, seleccione *Crear nuevo almacén de objetos*.
+. Desde la página Información del almacén de objetos, seleccione *Crear nuevo almacén de objetos*.
++
+image:screenshot_tiering_object_store_create_button.png["Una captura de pantalla que muestra el botón Crear nuevo almacén de objetos para crear un nuevo almacén de objetos."]
+
++
+Se inicia el asistente de almacenamiento de objetos.  El siguiente ejemplo muestra cómo crear un almacén de objetos en Amazon S3.
+
+. *Definir nombre de almacenamiento de objetos*: ingrese un nombre para este almacenamiento de objetos.  Debe ser único respecto de cualquier otro almacenamiento de objetos que pueda estar utilizando con agregados en este clúster.
+. *Seleccionar proveedor*: seleccione el proveedor, por ejemplo *Amazon Web Services*, y seleccione *Continuar*.
+. Complete los pasos en las páginas *Crear almacenamiento de objetos*:
++
+.. *S3 Bucket*: agregue un nuevo bucket S3 o seleccione un bucket S3 existente que comience con el prefijo _fabric-pool_.  Luego ingrese el ID de la cuenta de AWS que proporciona acceso al depósito, seleccione la región del depósito y seleccione *Continuar*.
++
+El prefijo _fabric-pool_ es necesario porque la política de IAM para el agente de la consola permite que la instancia realice acciones de S3 en depósitos nombrados con ese prefijo exacto.  Por ejemplo, puede nombrar el bucket S3 _fabric-pool-AFF1_, donde AFF1 es el nombre del clúster.
+
+.. *Ciclo de vida de la clase de almacenamiento*: Cloud Tiering administra las transiciones del ciclo de vida de sus datos organizados en niveles.  Los datos comienzan en la clase _Standard_, pero puede crear una regla para aplicar una clase de almacenamiento diferente a los datos después de una cierta cantidad de días.
++
+Seleccione la clase de almacenamiento S3 a la que desea transferir los datos en niveles y la cantidad de días antes de que los datos se asignen a esa clase, y seleccione *Continuar*.  Por ejemplo, la captura de pantalla a continuación muestra que los datos escalonados se asignan a la clase _Standard-IA_ desde la clase _Standard_ después de 45 días en el almacenamiento de objetos.
+
++
+Si elige *Mantener los datos en esta clase de almacenamiento*, los datos permanecerán en la clase de almacenamiento _Estándar_ y no se aplicarán reglas. link:reference-aws-support.html["Ver clases de almacenamiento compatibles"^] .
+
++
+image:screenshot_tiering_lifecycle_selection_aws.png["Una captura de pantalla que muestra cómo seleccionar otra clase de almacenamiento que se asigna a sus datos después de una cierta cantidad de días."]
+
++
+Tenga en cuenta que la regla del ciclo de vida se aplica a todos los objetos en el depósito seleccionado.
+
+.. *Credenciales*: Ingrese el ID de la clave de acceso y la clave secreta de un usuario de IAM que tenga los permisos S3 necesarios y seleccione *Continuar*.
++
+El usuario de IAM debe estar en la misma cuenta de AWS que el depósito que seleccionó o creó en la página *S3 Bucket*.  Consulta los permisos necesarios en la sección sobre activación de niveles.
+
+.. *Red de clúster*: seleccione el espacio IP que ONTAP debe usar para conectarse al almacenamiento de objetos y seleccione *Continuar*.
++
+Seleccionar el espacio IP correcto garantiza que Cloud Tiering pueda configurar una conexión desde ONTAP al almacenamiento de objetos de su proveedor de nube.
+
+
+
+
+
+Se crea el almacén de objetos.
+
+Ahora puedes adjuntar el almacén de objetos a un agregado en tu clúster.
+
+
+
+== Adjuntar un segundo almacén de objetos a un agregado para crear reflejo
+
+Puede adjuntar un segundo almacén de objetos a un agregado para crear un espejo FabricPool para organizar datos en niveles sincrónicos en dos almacenes de objetos.  Debe tener un almacén de objetos ya adjunto al agregado. https://docs.netapp.com/us-en/ontap/fabricpool/create-mirror-task.html["Obtenga más información sobre los espejos FabricPool"^] .
+
+Cuando se utiliza una configuración de MetroCluster , se recomienda utilizar almacenes de objetos en la nube pública que se encuentren en diferentes zonas de disponibilidad. https://docs.netapp.com/us-en/ontap/fabricpool/setup-object-stores-mcc-task.html["Obtenga más información sobre los requisitos de MetroCluster en la documentación de ONTAP"^] .  Dentro de un MetroCluster, no se recomienda utilizar agregados no reflejados, ya que hacerlo generará un mensaje de error.
+
+Cuando utiliza StorageGRID como su almacén de objetos en una configuración de MetroCluster , ambos sistemas ONTAP pueden realizar la organización en niveles de FabricPool en un solo sistema StorageGRID .  Cada sistema ONTAP debe clasificar los datos en diferentes categorías.
+
+.Pasos
+. Desde la página *Clústeres*, seleccione *Configuración avanzada* para el clúster seleccionado.
++
+image:screenshot_tiering_advanced_setup_button.png["Una captura de pantalla que muestra el botón Configuración avanzada para un clúster."]
+
+. Desde la página Configuración avanzada, arrastre el almacén de objetos que desea utilizar a la ubicación del almacén de objetos reflejado.
++
+image:screenshot_tiering_mirror_config.png["Una captura de pantalla que muestra cómo arrastrar un segundo almacén de objetos a un agregado para crear un espejo de niveles."]
+
+. En el cuadro de diálogo Adjuntar almacén de objetos, seleccione *Adjuntar* y el segundo almacén de objetos se adjuntará al agregado.
++
+image:screenshot_tiering_mirror_config_complete.png["Una captura de pantalla que muestra un segundo almacén de objetos adjunto a un agregado."]
+
+
+
+El estado del espejo aparecerá como "Sincronización en progreso" mientras los 2 almacenes de objetos se estén sincronizando.  El estado cambiará a "Sincronizado" cuando se complete la sincronización.
+
+
+
+== Intercambiar el almacén de objetos principal y espejo
+
+Puede intercambiar el almacén de objetos principal y espejo por un agregado.  El espejo del almacén de objetos se convierte en el principal, y el principal original se convierte en el espejo.
+
+.Pasos
+. Desde la página *Clústeres*, seleccione *Configuración avanzada* para el clúster seleccionado.
++
+image:screenshot_tiering_advanced_setup_button.png["Una captura de pantalla que muestra el botón Configuración avanzada para un clúster."]
+
+. Desde la página Configuración avanzada, seleccione el ícono de menú para el agregado y seleccione *Intercambiar destinos*.
++
+image:screenshot_tiering_mirror_swap.png["Una captura de pantalla que muestra la opción Destino de intercambio para un agregado."]
+
+. Apruebe la acción en el cuadro de diálogo y se intercambiarán los objetos principales y espejo.
+
+
+
+
+== Eliminar un almacén de objetos reflejados de un agregado
+
+Puede eliminar un espejo de FabricPool si ya no necesita replicar en un almacén de objetos adicional.
+
+.Pasos
+. Desde la página *Clústeres*, seleccione *Configuración avanzada* para el clúster seleccionado.
++
+image:screenshot_tiering_advanced_setup_button.png["Una captura de pantalla que muestra el botón Configuración avanzada para un clúster."]
+
+. Desde la página Configuración avanzada, seleccione el ícono de menú para el agregado y seleccione *Deshacer espejo del almacén de objetos*.
++
+image:screenshot_tiering_mirror_delete.png["Una captura de pantalla que muestra la opción Deseleccionar almacén de objetos para un agregado."]
+
+
+
+El almacén de objetos reflejado se elimina del agregado y los datos estratificados ya no se replican.
+
+
+NOTE: Al eliminar el almacén de objetos reflejado de una configuración de MetroCluster , se le preguntará si desea eliminar también el almacén de objetos principal.  Puede elegir mantener el almacén de objetos principal adjunto al agregado o eliminarlo.
+
+
+
+== Migre sus datos estratificados a un proveedor de nube diferente
+
+Cloud Tiering le permite migrar fácilmente sus datos estratificados a un proveedor de nube diferente.  Por ejemplo, si desea migrar de Amazon S3 a Azure Blob, puede seguir los pasos enumerados anteriormente en este orden:
+
+. Agregar un almacén de objetos Blob de Azure.
+. Adjunte este nuevo almacén de objetos como espejo del agregado existente.
+. Intercambiar los almacenes de objetos primarios y espejo.
+. Eliminar la duplicación del almacén de objetos de Amazon S3.
+

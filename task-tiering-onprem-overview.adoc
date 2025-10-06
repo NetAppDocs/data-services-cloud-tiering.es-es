@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: task-tiering-onprem-overview.html 
+keywords: overview, tiering overview, tiered clusters, clusters enabled for tiering, data tiering overview, cold data, hot data, tiered data, savings, savings opportunities, saving opportunity, policies, cold snapshots, all dp user data, cold user data & snapshots, cold user data and snapshots, all user data, no policy, marketplace subscriptions, clusters associated 
+summary: Cloud Tiering proporciona una vista agregada de la clasificación de datos de cada uno de sus clústeres locales.  Esta descripción general proporciona una imagen clara de su entorno y le permite tomar las medidas adecuadas. 
+---
+= Obtenga una descripción general de la organización en niveles de datos de sus clústeres en NetApp Cloud Tiering
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Cloud Tiering proporciona una vista agregada de la clasificación de datos de cada uno de sus clústeres locales.  Esta descripción general proporciona una imagen clara de su entorno y le permite tomar las medidas adecuadas.
+
+Seleccione *Niveles en la nube > Panel local* para ver los siguientes detalles sobre su entorno.
+
+image:screenshot_tiering_onprem_dashboard.png["Una captura de pantalla de la página del Panel de control local."]
+
+Cúmulos descubiertos:: La cantidad de clústeres locales que Cloud Tiering ha descubierto.  El gráfico proporciona una descripción general del estado de niveles de estos clústeres.
++
+--
+* Nivel alto: clústeres que tienen niveles de más del 20 % de sus datos fríos
+* Nivel bajo: clústeres que tienen en niveles menos del 20 % de sus datos fríos
+* Sin niveles: clústeres que no organizan ningún dato en niveles
+* No elegible: clústeres que no admiten la organización en niveles de datos
+
+
+--
+Descripción general de los datos:: La cantidad de datos que utilizan todos los clústeres descubiertos. El gráfico muestra cuántos datos se están organizando en niveles para estos clústeres.
++
+--
+* Datos escalonados: datos fríos totales que se agrupan en niveles en la nube
+* Datos fríos: datos fríos totales que no se clasifican
+* Datos activos: total de datos activos que se están utilizando
+* No elegible: datos totales que no se organizan en niveles porque el clúster o el volumen no admiten la organización en niveles de datos
+
+
+--
+Descripción general de los niveles:: La cantidad de datos que se están clasificando actualmente y la cantidad de datos fríos que potencialmente podrían clasificarse.
+Políticas:: La cantidad de veces que se ha aplicado cada política de niveles a un volumen.
+Suscripciones al Marketplace:: La cantidad de clústeres asociados con cada tipo de suscripción de Marketplace y una indicación sobre el estado de su suscripción.
+

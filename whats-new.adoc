@@ -1,0 +1,167 @@
+---
+sidebar: sidebar 
+permalink: whats-new.html 
+keywords: 'what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, tiering' 
+summary: Descubra las novedades en NetApp Cloud Tiering. 
+---
+= Novedades en NetApp Cloud Tiering
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Descubra las novedades en NetApp Cloud Tiering.
+
+
+
+== 6 de octubre de 2025
+
+
+
+=== La BlueXP tiering ahora es NetApp Cloud Tiering
+
+La BlueXP tiering ha cambiado su nombre a NetApp Cloud Tiering.
+
+
+
+=== BlueXP ahora es NetApp Console
+
+La consola NetApp , construida sobre la base BlueXP mejorada y reestructurada, proporciona una gestión centralizada del almacenamiento NetApp y de los servicios de datos NetApp en entornos locales y en la nube a nivel empresarial, brindando información en tiempo real, flujos de trabajo más rápidos y una administración simplificada, que es altamente segura y compatible.
+
+Para obtener más detalles sobre lo que ha cambiado, consulte lalink:https://docs.netapp.com/us-en/bluexp-relnotes/index.html["Notas de la versión de la consola de NetApp"] .
+
+
+
+== 9 de agosto de 2023
+
+
+
+=== Utilice un prefijo personalizado para el nombre del depósito
+
+En el pasado, era necesario utilizar el prefijo "fabric-pool" predeterminado al definir el nombre del depósito, por ejemplo, _fabric-pool-bucket1_. Ahora puedes usar un prefijo personalizado al nombrar tu bucket. Esta funcionalidad solo está disponible cuando se agrupan los datos en Amazon S3. https://docs.netapp.com/us-en/bluexp-tiering/task-tiering-onprem-aws.html#prepare-your-aws-environment["Más información"] .
+
+
+
+=== Busque un clúster en todos los conectores BlueXP
+
+Si utiliza varios conectores para administrar todos los sistemas de almacenamiento en su entorno, es posible que algunos clústeres en los que desee implementar niveles estén en diferentes conectores. Si no está seguro de qué conector administra un determinado clúster, puede buscar en todos los conectores mediante Cloud Tiering. https://docs.netapp.com/us-en/bluexp-tiering/task-managing-tiering.html#search-for-a-cluster-across-all-bluexp-connectors["Más información"] .
+
+
+
+== 4 de julio de 2023
+
+
+
+=== Ajustar el ancho de banda para transferir datos inactivos
+
+Cuando activa la organización en niveles en la nube, ONTAP puede usar una cantidad ilimitada de ancho de banda de red para transferir los datos inactivos de los volúmenes del clúster al almacenamiento de objetos.  Si nota que el tráfico en niveles afecta las cargas de trabajo normales de los usuarios, puede limitar la cantidad de ancho de banda que se puede usar durante la transferencia. https://docs.netapp.com/us-en/bluexp-tiering/task-managing-tiering.html#changing-the-network-bandwidth-available-to-upload-inactive-data-to-object-storage["Más información"] .
+
+
+
+=== Evento de niveles que se muestra en el Centro de notificaciones
+
+El evento de niveles "Asigne datos adicionales desde el clúster <nombre> al almacenamiento de objetos para aumentar la eficiencia del almacenamiento" ahora aparece como una notificación cuando un clúster está agrupando en niveles menos del 20 % de sus datos fríos, incluidos los clústeres que no están agrupando en niveles ningún dato.
+
+Esta notificación es una "Recomendación" para ayudar a que sus sistemas sean más eficientes y ahorrar en costos de almacenamiento.  Proporciona un enlace a la https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de ahorro y costo total de propiedad de Cloud Tiering"^] para ayudarle a calcular sus ahorros de costos.
+
+
+
+== 03 de abril de 2023
+
+
+
+=== Se ha eliminado la pestaña de licencias
+
+Se ha eliminado la pestaña Licencias de la interfaz de niveles de nube.  Ahora se puede acceder a todas las licencias para suscripciones de pago por uso (PAYGO) desde el panel de control local de niveles de nube.  También hay un enlace desde esa página a la BlueXP digital wallet para que puedas ver y administrar cualquier licencia BYOL (trae tu propia licencia) de Cloud Tiering.
+
+
+
+=== Las pestañas de niveles se han renombrado y actualizado
+
+La pestaña "Panel de clústeres" ha cambiado de nombre a "Clústeres", y la pestaña "Descripción general local" ha cambiado de nombre a "Panel de clústeres local".  Estas páginas han agregado información que le ayudará a evaluar si puede optimizar su espacio de almacenamiento con una configuración de niveles adicional.
+
+
+
+== 5 de marzo de 2023
+
+
+
+=== Generar un informe de niveles para volúmenes
+
+Puede descargar un informe desde la página Volúmenes por niveles para poder revisar el estado de niveles de todos los volúmenes en los clústeres que está administrando.  BlueXP Tiering genera un archivo .CSV que puede revisar y enviar a otras personas de su empresa según sea necesario. https://docs.netapp.com/us-en/bluexp-tiering/task-managing-tiering.html#download-a-tiering-report-for-your-volumes["Vea cómo descargar el informe de niveles"] .
+
+
+
+== 6 de diciembre de 2022
+
+
+
+=== Cambios en el punto final de acceso a Internet saliente del conector
+
+Debido a un cambio en la organización en niveles de la nube, es necesario cambiar los siguientes puntos finales del conector para que la organización en niveles de la nube funcione correctamente:
+
+[cols="50,50"]
+|===
+| Punto final antiguo | Nuevo punto final 
+
+
+| \ https://cloudmanager.cloud.netapp.com | \ https://api.bluexp.netapp.com 
+
+
+| \https://*.cloudmanager.cloud.netapp.com | \https://*.api.bluexp.netapp.com 
+|===
+Vea la lista completa de puntos finales para su https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-aws.html#outbound-internet-access["AWS"^] , https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-google.html#outbound-internet-access["Google Cloud"^] , o https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-azure.html#outbound-internet-access["Azur"^] entorno de nube.
+
+
+
+== 6 de noviembre de 2022
+
+
+
+=== Arrastre y suelte para habilitar la clasificación en niveles para destinos adicionales
+
+Si el destino de niveles de Azure Blob, Google Cloud Storage o StorageGRID existe como entorno de trabajo en el lienzo, puede arrastrar su entorno de trabajo de ONTAP local al destino para iniciar el asistente de configuración de niveles.
+
+
+
+== 19 de septiembre de 2022
+
+
+
+=== Configurar AWS PrivateLink al conectarse a Amazon S3
+
+En versiones anteriores, resultaba muy laborioso proporcionar esta forma segura de conectar su clúster a un bucket S3 a través de un punto final de VPC.  Ahora puedes seguir los pasos previos necesarios para https://docs.netapp.com/us-en/bluexp-tiering/task-tiering-onprem-aws.html#configure-your-system-for-a-private-connection-using-a-vpc-endpoint-interface["Configure su sistema para una conexión privada mediante una interfaz de punto final de VPC"] y luego puede seleccionar PrivateLink durante el asistente de configuración de niveles en la página Redes.
+
+https://docs.netapp.com/us-en/bluexp-tiering/task-tiering-onprem-aws.html["Revise los requisitos y los pasos para transferir datos inactivos a Amazon S3"] .
+
+
+
+=== Arrastre y suelte para habilitar la organización en niveles en Amazon S3
+
+Si el destino de niveles de Amazon S3 existe como entorno de trabajo en el Canvas, puede arrastrar su entorno de trabajo ONTAP local al destino para iniciar el asistente de configuración de niveles.
+
+
+
+=== Elija el comportamiento de niveles al eliminar el almacén de objetos reflejados
+
+Al eliminar el almacén de objetos reflejado de una configuración de MetroCluster , se le preguntará si desea eliminar también el almacén de objetos principal.  Puede elegir mantener el almacén de objetos principal adjunto al agregado o eliminarlo.
+
+
+
+== 03 de agosto de 2022
+
+
+
+=== Configurar almacenes de objetos adicionales para otros agregados
+
+La interfaz de usuario de niveles en la nube ha agregado un nuevo conjunto de páginas para la configuración del almacenamiento de objetos.  Puede agregar nuevos almacenes de objetos, conectar varios almacenes de objetos a un agregado para la duplicación de FabricPool , intercambiar los almacenes de objetos principales y reflejados, eliminar conexiones de almacenes de objetos a agregados y más. https://docs.netapp.com/us-en/bluexp-tiering/task-managing-object-storage.html["Obtenga más información sobre la nueva funcionalidad de almacenamiento de objetos."]
+
+
+
+=== Soporte de licencias para configuraciones de MetroCluster
+
+Las licencias de niveles de nube ahora se pueden compartir con sus clústeres que están en configuraciones de MetroCluster .  Ya no es necesario utilizar las licencias obsoletas de FabricPool para estos escenarios.  Esto hace que sea más fácil usar las licencias de niveles de nube "flotantes" en más clústeres. https://docs.netapp.com/us-en/bluexp-tiering/task-licensing-cloud-tiering.html#apply-bluexp-tiering-licenses-to-clusters-in-special-configurations["Vea cómo licenciar y configurar estos tipos de clústeres."]

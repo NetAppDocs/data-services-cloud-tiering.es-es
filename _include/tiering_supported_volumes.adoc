@@ -1,0 +1,6 @@
+= 
+:allow-uri-read: 
+
+
+Volúmenes y agregados admitidos:: La cantidad total de volúmenes que Cloud Tiering puede organizar en niveles puede ser menor que la cantidad de volúmenes en su sistema ONTAP .  Esto se debe a que los volúmenes no se pueden clasificar a partir de algunos agregados.  Consulte la documentación de ONTAP para https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html#functionality-or-features-not-supported-by-fabricpool["funcionalidad o características no compatibles con FabricPool"^] .
+

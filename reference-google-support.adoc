@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: reference-google-support.html 
+keywords: google, gcp, regions, google regions, gcp regions, storage class, standard, nearline, coldline, archive, cloud tiering, cloud tier, bluexp 
+summary: NetApp Cloud Tiering admite varias clases de almacenamiento de Google Cloud y la mayoría de las regiones. 
+---
+= Clases y regiones de almacenamiento de Google Cloud compatibles con NetApp Cloud Tiering
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Cloud Tiering admite varias clases de almacenamiento de Google Cloud y la mayoría de las regiones.
+
+
+
+== Clases de almacenamiento de GCP compatibles
+
+Cuando configura la organización en niveles de datos en GCP desde sus sistemas ONTAP locales, Cloud Tiering utiliza automáticamente la clase de almacenamiento _Standard_ para sus datos inactivos.  Cloud Tiering puede aplicar una regla de ciclo de vida para que los datos pasen de la clase de almacenamiento _Estándar_ a otras clases de almacenamiento después de una cierta cantidad de días.  Puede elegir entre las siguientes clases de almacenamiento:
+
+* Cerca de línea
+* Línea fría
+* Archivo
+
+
+Si no elige otra clase de almacenamiento, los datos permanecerán en la clase de almacenamiento _Estándar_ y no se aplicarán reglas.
+
+Cuando configura una regla de ciclo de vida de niveles de nube, no debe configurar ninguna regla de ciclo de vida al configurar el depósito en su cuenta de Google.
+
+https://cloud.google.com/storage/docs/storage-classes["Obtenga más información sobre las clases de Google Cloud Storage"^] .
+
+
+
+== Regiones de Google Cloud compatibles
+
+Cloud Tiering admite las siguientes regiones.
+
+
+
+=== Américas
+
+* Iowa
+* Los Ángeles
+* Montreal
+* Virginia del Norte
+* Oregón
+* São Paulo
+* Carolina del Sur
+
+
+
+
+=== Asia Pacífico
+
+* Hong Kong
+* Bombay
+* Osaka
+* Singapur
+* Sídney
+* Taiwán
+* Tokio
+
+
+
+
+=== Europa
+
+* Bélgica
+* Finlandia
+* Fráncfort
+* Londres
+* Países Bajos
+* Zúrich
+

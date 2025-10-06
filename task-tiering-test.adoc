@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: task-tiering-test.html 
+keywords: throughput, latency, tiering performance, cloud performance test, tiering test, object storage performance 
+summary: Ejecute una prueba de rendimiento en la nube para medir la latencia de la red y el rendimiento del rendimiento desde un clúster ONTAP a un almacén de objetos antes y después de configurar la clasificación de datos. 
+---
+= Medir la latencia de la red y el rendimiento del rendimiento en NetApp Cloud Tiering
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Ejecute una prueba de rendimiento en la nube para medir la latencia de la red y el rendimiento del rendimiento desde un clúster ONTAP a un almacén de objetos antes y después de configurar la clasificación de datos en NetApp Cloud Tiering.  La prueba también identifica cualquier falla que haya ocurrido.
+
+A continuación se muestran ejemplos de resultados de rendimiento:
+
+image:screenshot_cloud_performance_test.png["Una captura de pantalla de los resultados del rendimiento del clúster para una prueba de rendimiento en la nube."]
+
+.Antes de empezar
+Es mejor ejecutar esta comprobación cuando el clúster tenga menos del 50 % de utilización de CPU.
+
+.Pasos para un clúster que no se ha configurado para la organización en niveles
+. Desde el menú de navegación de la izquierda, seleccione *Movilidad > Niveles de nube*.
+. Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Prueba de rendimiento de la nube*.
+. Revise los detalles y seleccione *Continuar*.
+. Revise los detalles y seleccione *Continuar*.
+. Siga las instrucciones para proporcionar la información requerida.
++
+La información que debes proporcionar es la misma que si estuvieras configurando la organización en niveles en el clúster.
+
+. Opcionalmente, continúe con el asistente de volúmenes de niveles para completar la configuración.
+
+
+.Pasos para un clúster que se ha configurado para niveles
+. Desde el menú de navegación de la izquierda, seleccione *Movilidad > Niveles de nube*.
+. Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Prueba de rendimiento de la nube*.
+. Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Prueba de rendimiento de la nube*.
+. Seleccione un nodo de la lista desplegable.
+. Vea los resultados o vuelva a comprobar el rendimiento.
+

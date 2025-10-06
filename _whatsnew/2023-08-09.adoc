@@ -1,0 +1,15 @@
+= Utilice un prefijo personalizado para el nombre del depósito
+:allow-uri-read: 
+
+
+
+
+=== Utilice un prefijo personalizado para el nombre del depósito
+
+En el pasado, era necesario utilizar el prefijo "fabric-pool" predeterminado al definir el nombre del depósito, por ejemplo, _fabric-pool-bucket1_. Ahora puedes usar un prefijo personalizado al nombrar tu bucket. Esta funcionalidad solo está disponible cuando se agrupan los datos en Amazon S3. https://docs.netapp.com/us-en/bluexp-tiering/task-tiering-onprem-aws.html#prepare-your-aws-environment["Más información"] .
+
+
+
+=== Busque un clúster en todos los conectores BlueXP
+
+Si utiliza varios conectores para administrar todos los sistemas de almacenamiento en su entorno, es posible que algunos clústeres en los que desee implementar niveles estén en diferentes conectores. Si no está seguro de qué conector administra un determinado clúster, puede buscar en todos los conectores mediante Cloud Tiering. https://docs.netapp.com/us-en/bluexp-tiering/task-managing-tiering.html#search-for-a-cluster-across-all-bluexp-connectors["Más información"] .

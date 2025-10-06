@@ -1,0 +1,65 @@
+---
+indexpage:
+  title: Documentación de NetApp Cloud Tiering
+  summary: NetApp Cloud Tiering extiende su centro de datos a la nube al organizar
+    automáticamente en niveles los datos inactivos desde los clústeres ONTAP locales
+    hasta el almacenamiento de objetos.
+  keywords: bluexp, ontap, cloud tiering, documentation, netapp console, console
+  lead: NetApp Cloud Tiering extiende su centro de datos a la nube al organizar automáticamente
+    en niveles los datos inactivos desde los clústeres ONTAP locales hasta el almacenamiento
+    de objetos.
+  tiles:
+  - title: Empezar
+    links:
+    - title: Obtenga más información sobre la organización en niveles de la nube de
+        NetApp
+      url: concept-cloud-tiering.html
+    - title: Qué hay de nuevo
+      url: whats-new.html
+    - title: Configurar licencias
+      url: task-licensing-cloud-tiering.html
+  - title: Transfiera los datos de ONTAP locales a la nube
+    links:
+    - title: Nivel a Amazon S3
+      url: task-tiering-onprem-aws.html
+    - title: Capa a Blob de Azure
+      url: task-tiering-onprem-azure.html
+    - title: Nivel a Google Cloud
+      url: task-tiering-onprem-gcp.html
+    - title: Nivel a StorageGRID
+      url: task-tiering-onprem-storagegrid.html
+    - title: Nivel a S3 genérico
+      url: task-tiering-onprem-s3-compat.html
+  - title: Administrar la configuración de niveles
+    links:
+    - title: Cambiar la política de niveles de un volumen
+      url: task-managing-tiering.html#changing-a-volumes-tiering-policy
+    - title: Revisar la información de niveles de un clúster
+      url: task-managing-tiering.html#reviewing-tiering-info-for-a-cluster
+    - title: Datos de niveles de volúmenes adicionales
+      url: task-managing-tiering.html#tiering-data-from-additional-volumes
+    - title: Cambiar el ancho de banda para cargar datos inactivos al almacenamiento
+        de objetos
+      url: task-managing-tiering.html#changing-the-network-bandwidth-available-to-upload-inactive-data-to-object-storage
+    - title: Trasladar datos desde la nube al nivel de rendimiento
+      url: task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier
+    - title: Administrar la configuración de niveles en los agregados
+      url: task-managing-tiering.html#managing-tiering-settings-on-aggregates
+  - title: Administrar el almacenamiento de objetos
+    links:
+    - title: Agregar un nuevo almacén de objetos para un clúster
+      url: task-managing-object-storage.html#adding-a-new-object-store
+    - title: Agregue un segundo almacén de objetos a un agregado para crear reflejo
+      url: task-managing-object-storage.html#attaching-a-second-object-store-to-an-aggregate-for-mirroring
+    - title: Intercambiar el almacén de objetos principal y espejo
+      url: task-managing-object-storage.html#swapping-the-primary-and-mirror-object-store
+    - title: Eliminar un almacén de objetos reflejados
+      url: task-managing-object-storage.html#removing-a-mirror-object-store-from-an-aggregate
+  - title: Blogs y comunidad
+    links:
+    - title: Consola de NetApp
+      url: https://www.netapp.com/console
+    - title: Servicios de datos de NetApp
+      url: https://www.netapp.com/data-services/
+    - title: Comunidad de NetApp
+      url: https://community.netapp.com/

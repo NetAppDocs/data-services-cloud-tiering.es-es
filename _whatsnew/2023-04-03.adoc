@@ -1,0 +1,15 @@
+= Se ha eliminado la pestaña de licencias
+:allow-uri-read: 
+
+
+
+
+=== Se ha eliminado la pestaña de licencias
+
+Se ha eliminado la pestaña Licencias de la interfaz de niveles de nube.  Ahora se puede acceder a todas las licencias para suscripciones de pago por uso (PAYGO) desde el panel de control local de niveles de nube.  También hay un enlace desde esa página a la BlueXP digital wallet para que puedas ver y administrar cualquier licencia BYOL (trae tu propia licencia) de Cloud Tiering.
+
+
+
+=== Las pestañas de niveles se han renombrado y actualizado
+
+La pestaña "Panel de clústeres" ha cambiado de nombre a "Clústeres", y la pestaña "Descripción general local" ha cambiado de nombre a "Panel de clústeres local".  Estas páginas han agregado información que le ayudará a evaluar si puede optimizar su espacio de almacenamiento con una configuración de niveles adicional.

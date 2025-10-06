@@ -1,0 +1,288 @@
+---
+sidebar: sidebar 
+permalink: task-managing-tiering.html 
+keywords: discover, volumes, report, hot, cold, inactive, active, capacity, used capacity, savings, health, failed, console 
+summary: Ahora que ha configurado la organización en niveles de datos desde sus clústeres ONTAP locales, puede organizar en niveles datos desde volúmenes adicionales, cambiar la política de organización en niveles de un volumen, descubrir clústeres adicionales y más. 
+---
+= Administre la organización en niveles de datos para sus clústeres en NetApp Cloud Tiering
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Ahora que ha configurado la organización en niveles de datos desde sus clústeres ONTAP locales, puede organizar en niveles datos desde volúmenes adicionales, cambiar la política de organización en niveles de un volumen, descubrir clústeres adicionales y más mediante NetApp Cloud Tiering.
+
+
+
+== Revisar la información de niveles de un clúster
+
+Verifique los datos en el nivel de nube, en los discos o la cantidad de datos activos y fríos en los discos del clúster.  O bien, es posible que desee ver la cantidad de datos calientes y fríos en los discos del clúster.  Cloud Tiering proporciona esta información para cada clúster.
+
+.Pasos
+. Desde el menú de navegación de la izquierda, seleccione *Movilidad > Niveles de nube*.
+. Desde la página *Clústeres*, seleccione el ícono de menúimage:icon-action.png["Icono de acciones"] para un clúster y seleccione *Información del clúster*.
++
+image:screenshot_tiering_cluster_info_button.png["Una captura de pantalla de la selección del botón Información del clúster en la página Clústeres."]
+
+. Revise los detalles sobre el clúster.
++
+He aquí un ejemplo:
+
++
+image:screenshot_tiering_cluster_info.png["Una captura de pantalla que muestra la capacidad total de datos utilizados, la capacidad utilizada del clúster y la información del clúster."]
+
+
+
+Tenga en cuenta que la visualización es diferente para los sistemas Cloud Volumes ONTAP .  Si bien los volúmenes Cloud Volumes ONTAP pueden tener datos organizados en niveles en la nube, no utilizan el servicio Cloud Tiering. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html["Aprenda a organizar en niveles los datos inactivos de los sistemas Cloud Volumes ONTAP en almacenamiento de objetos de bajo costo."^] .
+
+También puedes https://docs.netapp.com/us-en/active-iq/task-informed-decisions-based-on-cloud-recommendations.html#tiering["Ver información de niveles para un clúster desde Active IQ Digital Advisor (también conocido como Digital Advisor)"^] Si está familiarizado con este producto de NetApp .  Seleccione *Recomendaciones en la nube* en el panel de navegación izquierdo.
+
+image:screenshot_tiering_aiq_fabricpool_info.png["Una captura de pantalla que muestra información de FabricPool para un clúster que utiliza FabricPool Advisor de Digital Advisor."]
+
+
+
+== Datos de niveles de volúmenes adicionales
+
+Configure la clasificación de datos para volúmenes adicionales en cualquier momento, por ejemplo, después de crear un nuevo volumen.
+
+
+TIP: No es necesario configurar el almacenamiento de objetos porque ya estaba configurado cuando configuró inicialmente la organización en niveles para el clúster.  ONTAP agrupa los datos inactivos desde cualquier volumen adicional al mismo almacén de objetos.
+
+.Pasos
+. Desde el menú de navegación de la izquierda, seleccione *Movilidad > Niveles de nube*.
+. Desde la página *Clústeres*, seleccione *Volúmenes de nivel* para el clúster.
++
+image:screenshot_tiering_tier_volumes_button.png["Una captura de pantalla que muestra cómo seleccionar el botón Volúmenes de niveles para un clúster."]
+
+. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la clasificación por niveles e inicie la página Política de niveles:
++
+** Para seleccionar todos los volúmenes, marque la casilla en la fila del título (image:button_backup_all_volumes.png[""] ) y seleccione *Configurar volúmenes*.
+** Para seleccionar varios volúmenes, marque la casilla de cada volumen (image:button_backup_1_volume.png[""] ) y seleccione *Configurar volúmenes*.
+** Para seleccionar un solo volumen, seleccione la fila (oimage:screenshot_edit_icon.gif["editar icono de lápiz"] icono) para el volumen.
++
+image:screenshot_tiering_tier_volumes.png["Una captura de pantalla que muestra cómo seleccionar un solo volumen, varios volúmenes o todos los volúmenes, y el botón modificar volúmenes seleccionados."]
+
+
+
+. En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
+. En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
++
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"] .
+
++
+image:screenshot_tiering_policy_settings.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]
+
+
+
+.Resultado
+ONTAP comienza a organizar los datos de los volúmenes seleccionados en la nube.
+
+
+
+== Cambiar la política de niveles de un volumen
+
+Cambiar la política de niveles de un volumen cambia la forma en que ONTAP organiza los datos fríos en el almacenamiento de objetos.  El cambio comienza desde el momento en que se cambia la política.  Solo cambia el comportamiento de niveles subsiguientes para el volumen: no mueve datos retroactivamente al nivel de nube.
+
+.Pasos
+. Desde el menú de navegación de la izquierda, seleccione *Movilidad > CloudTiering*.
+. Desde la página *Clústeres*, seleccione *Volúmenes de nivel* para el clúster.
+. Desde la página *Clústeres*, seleccione *Volúmenes de nivel* para el clúster.
+. Haga clic en la fila de un volumen, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento y seleccione *Aplicar*.
+. Haga clic en la fila de un volumen, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento y seleccione *Aplicar*.
++
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"] .
+
++
+image:screenshot_tiering_policy_settings.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]
+
+
+
+
+NOTE: Si ve opciones para "Recuperar datos escalonados", consulte<<Migrar datos desde el nivel de nube al nivel de rendimiento,Migrar datos desde el nivel de nube al nivel de rendimiento>> Para más detalles.
+
+.Resultado
+ONTAP cambia la política de niveles y comienza a clasificar los datos en niveles según la nueva política.
+
+
+
+== Cambiar el ancho de banda de red disponible para cargar datos inactivos al almacenamiento de objetos
+
+Cuando activa la organización en niveles de nube para un clúster, de manera predeterminada, ONTAP puede usar una cantidad ilimitada de ancho de banda para transferir los datos inactivos desde los volúmenes del sistema al almacenamiento de objetos.  Si el tráfico en niveles afecta las cargas de trabajo de los usuarios, limite el ancho de banda de red utilizado durante la transferencia.  Puede elegir un valor entre 1 y 10.000 Mbps como velocidad de transferencia máxima.
+
+. Desde el menú de navegación de la izquierda, seleccione *Movilidad > Niveles*.
+. Desde la página *Clústeres*, seleccione el ícono de menúimage:icon-action.png["Icono de acciones"] para un clúster y seleccione *Tasa de transferencia máxima*.
+. Desde la página *Clústeres*, seleccione el ícono de menúimage:icon-action.png["Icono de acciones"] para un clúster y seleccione *Tasa de transferencia máxima*.
++
+image:screenshot_tiering_transfer_rate_button.png["Una captura de pantalla de la selección del botón Velocidad de transferencia máxima en la página Clústeres."]
+
+. En la página _Tasa máxima de transferencia_, seleccione el botón de opción *Limitado* e ingrese el ancho de banda máximo que se puede usar, o seleccione *Ilimitado* para indicar que no hay límite.  Luego seleccione *Aplicar*.
+. En la página _Tasa máxima de transferencia_, seleccione el botón de opción *Limitado* e ingrese el ancho de banda máximo que se puede usar, o seleccione *Ilimitado* para indicar que no hay límite.  Luego seleccione *Aplicar*.
++
+image:screenshot_tiering_transfer_rate.png["Una captura de pantalla del cuadro de diálogo Velocidad máxima de transferencia para un clúster."]
+
+
+
+Esta configuración no afecta el ancho de banda asignado a ningún otro clúster que esté organizando datos en niveles.
+
+
+
+== Descargue un informe de niveles para sus volúmenes
+
+Descargue un informe de la página Volúmenes por niveles para poder revisar el estado de niveles de todos los volúmenes en los clústeres que está administrando.  Simplemente seleccione elimage:button_download.png["Descargar"] botón.  Cloud Tiering genera un archivo .CSV que puedes revisar y enviar a otros grupos según sea necesario.  El archivo .CSV incluye hasta 10.000 filas de datos.
+
+image:screenshot_tiering_report_download.png["Una captura de pantalla que muestra cómo generar un archivo CSV que enumera el estado de niveles de todos sus volúmenes."]
+
+
+
+== Migrar datos desde el nivel de nube al nivel de rendimiento
+
+Los datos escalonados a los que se accede desde la nube pueden "recalentarse" y volver al nivel de rendimiento.  Sin embargo, si desea promover datos de forma proactiva al nivel de rendimiento desde el nivel de nube, puede hacerlo en el cuadro de diálogo _Política de niveles_.  Esta capacidad está disponible cuando se utiliza ONTAP 9.8 y versiones posteriores.
+
+Puede hacer esto si desea dejar de usar la organización en niveles en un volumen o si decide mantener todos los datos del usuario en el nivel de rendimiento, pero conservar las copias instantáneas en el nivel de nube.
+
+Hay dos opciones:
+
+[cols="22,45,35"]
+|===
+| Opción | Descripción | Efecto en la política de niveles 
+
+
+| Recuperar todos los datos | Recupera todos los datos de volumen y copias instantáneas organizadas en la nube y las promueve al nivel de rendimiento. | La política de niveles se cambia a "Sin política". 
+
+
+| Recuperar el sistema de archivos activo | Recupera únicamente datos del sistema de archivos activos organizados en la nube y los promueve al nivel de rendimiento (las copias instantáneas permanecen en la nube). | La política de niveles se cambia a "Instantáneas frías". 
+|===
+
+NOTE: Su proveedor de nube puede cobrarle según la cantidad de datos transferidos fuera de la nube.
+
+.Pasos
+Asegúrese de que el nivel de rendimiento tenga suficiente espacio para los datos trasladados desde la nube.
+
+. Desde el menú de navegación de la izquierda, seleccione *Movilidad > Niveles de nube*.
+. Desde la página *Clústeres*, seleccione *Volúmenes de nivel* para el clúster.
+. Desde la página *Clústeres*, seleccione *Volúmenes de nivel* para el clúster.
+. Haga clic en elimage:screenshot_edit_icon.gif["icono de edición que aparece al final de cada fila de la tabla para ordenar los volúmenes por niveles"] Icono del volumen, elija la opción de recuperación que desea utilizar y seleccione *Aplicar*.
+. Haga clic en elimage:screenshot_edit_icon.gif["icono de edición que aparece al final de cada fila de la tabla para ordenar los volúmenes por niveles"] Icono del volumen, elija la opción de recuperación que desea utilizar y seleccione *Aplicar*.
++
+image:screenshot_tiering_policy_settings_with_retrieve.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]
+
+
+
+.Resultado
+Se modifica la política de niveles y los datos estratificados comienzan a migrarse nuevamente al nivel de rendimiento.  Dependiendo de la cantidad de datos en la nube, el proceso de transferencia podría tardar algún tiempo.
+
+
+
+== Administrar la configuración de niveles en los agregados
+
+Cada agregado en sus sistemas ONTAP locales tiene dos configuraciones que puede ajustar: el umbral de plenitud de niveles y si los informes de datos inactivos están habilitados.  Cada agregado en sus sistemas ONTAP locales tiene dos configuraciones que puede ajustar: el umbral de plenitud de niveles y si los informes de datos inactivos están habilitados.
+
+Umbral de plenitud de niveles:: Establecer el umbral en un número más bajo reduce la cantidad de datos que se deben almacenar en el nivel de rendimiento antes de que se realice la clasificación.  Esto podría ser útil para agregados grandes que contienen pocos datos activos.
++
+--
+Establecer el umbral en un número más alto aumenta la cantidad de datos que se deben almacenar en el nivel de rendimiento antes de que se realice la clasificación en niveles.  Esto podría ser útil para soluciones diseñadas para estratificar solo cuando los agregados están cerca de su capacidad máxima.
+
+--
+Informes de datos inactivos:: El informe de datos inactivos (IDR) utiliza un período de enfriamiento de 31 días para determinar qué datos se consideran inactivos.  La cantidad de datos fríos que se organizan en niveles depende de las políticas de organización en niveles establecidas en los volúmenes.  Esta cantidad podría ser diferente a la cantidad de datos fríos detectados por IDR utilizando un período de enfriamiento de 31 días.
++
+--
+
+TIP: Es mejor mantener IDR habilitado porque ayuda a identificar sus datos inactivos y oportunidades de ahorro.  La IDR debe permanecer habilitada si la clasificación de datos está habilitada en un agregado.
+
+--
+
+
+.Pasos
+. Desde la página *Clústeres*, seleccione *Configuración avanzada* para el clúster seleccionado.
+. Desde la página *Clústeres*, seleccione *Configuración avanzada* para el clúster seleccionado.
++
+image:screenshot_tiering_advanced_setup_button.png["Una captura de pantalla que muestra el botón Configuración avanzada para un clúster."]
+
+. Desde la página Configuración avanzada, seleccione el ícono de menú para el agregado y seleccione *Modificar agregado*.
+. Desde la página Configuración avanzada, seleccione el ícono de menú para el agregado y seleccione *Modificar agregado*.
++
+image:screenshot_tiering_modify_aggr.png["Una captura de pantalla que muestra la opción Modificar agregado para un agregado."]
+
+. En el cuadro de diálogo que se muestra, modifique el umbral de plenitud y elija si desea habilitar o deshabilitar el informe de datos inactivos.
++
+image:screenshot_tiering_modify_aggregate.png["Una captura de pantalla que muestra un control deslizante para modificar el umbral de plenitud de niveles y un botón para habilitar o deshabilitar los informes de datos inactivos."]
+
+. Haga clic en *Aplicar*.
+
+
+
+
+== Arreglar la salud operativa
+
+Si se producen fallas, Cloud Tiering muestra un estado de salud operativa "Fallido" en el Panel de control del clúster.  La salud refleja el estado del sistema ONTAP y de la consola de NetApp .
+
+.Pasos
+. Identifique cualquier clúster que tenga un estado operativo de "Fallido".
+. Coloque el cursor sobre el ícono informativo "i" para ver el motivo de la falla.
+. Corrija el problema:
++
+.. Verifique que el clúster ONTAP esté operativo y que tenga una conexión entrante y saliente con su proveedor de almacenamiento de objetos.
+.. Verifique que la consola tenga conexiones salientes al servicio Cloud Tiering, al almacén de objetos y a los clústeres ONTAP que descubre.
+
+
+
+
+
+
+== Descubra clústeres adicionales de Cloud Tiering
+
+Puede agregar sus clústeres ONTAP locales no descubiertos a la consola desde la página Tiering _Cluster_ para poder habilitar la organización en niveles para el clúster.
+
+Tenga en cuenta que también aparecen botones en la página de Tiering _On-Prem dashboard_ para que pueda descubrir clústeres adicionales.
+
+.Pasos
+. Desde Niveles de nube, seleccione la pestaña *Clústeres*.
+. Para ver los clústeres no descubiertos, seleccione *Mostrar clústeres no descubiertos*.
+. Para ver los clústeres no descubiertos, seleccione *Mostrar clústeres no descubiertos*.
++
+image:screenshot_tiering_show_undiscovered_cluster.png["Una captura de pantalla que muestra el botón Mostrar clústeres no descubiertos en el Panel de niveles."]
+
++
+Si sus credenciales de NSS están guardadas en la consola, los clústeres de su cuenta se muestran en la lista.
+
++
+Si sus credenciales de NSS no se guardan, primero se le solicitará que agregue sus credenciales antes de poder ver los clústeres no descubiertos.
+
++
+image:screenshot_tiering_discover_cluster.png["Una captura de pantalla que muestra cómo descubrir un clúster existente para agregarlo a la consola y al panel de niveles."]
+
+. Haga clic en *Descubrir clúster* para el clúster que desea administrar a través de la consola e implementar la clasificación de datos.
+. En la página _Detalles del clúster_, ingrese la contraseña de la cuenta de usuario administrador y seleccione *Descubrir*.
+. En la página _Detalles del clúster_, ingrese la contraseña de la cuenta de usuario administrador y seleccione *Descubrir*.
++
+Tenga en cuenta que la dirección IP de administración del clúster se completa según la información de su cuenta NSS.
+
+. En la página _Detalles y credenciales_, el nombre del clúster se agrega como Nombre del sistema, así que seleccione *Ir*.
+
+
+.Resultado
+La consola descubre el clúster y lo agrega a la página Sistemas utilizando el nombre del clúster como nombre del sistema.
+
+Puede habilitar el servicio de niveles u otros servicios para este clúster en el panel derecho.
+
+
+
+== Buscar un clúster en todos los agentes de la consola
+
+Si utiliza varios agentes para administrar todo el almacenamiento en su entorno, es posible que algunos clústeres en los que desee implementar niveles estén en otro agente.  Si no está seguro de qué agente administra un determinado clúster, puede buscar entre todos los agentes mediante Cloud Tiering.
+
+.Pasos
+. En la barra de menú de niveles de nube, seleccione el menú de acciones y seleccione *Buscar clúster en todos los agentes*.
++
+image:screenshot_tiering_search for_cluster.png["Una captura de pantalla que muestra cómo buscar un clúster que puede estar en cualquiera de sus agentes."]
+
+. En el cuadro de diálogo Buscar que se muestra, ingrese el nombre del clúster y seleccione *Buscar*.
++
+Cloud Tiering muestra el nombre del agente si puede encontrar el clúster.
+
+. https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors["Cambiar al agente y configurar la organización en niveles para el clúster"^] .
+

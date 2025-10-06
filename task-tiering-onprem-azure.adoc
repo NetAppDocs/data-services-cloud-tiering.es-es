@@ -1,0 +1,244 @@
+---
+sidebar: sidebar 
+permalink: task-tiering-onprem-azure.html 
+keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, azure, blob, azure blob 
+summary: Libere espacio en sus clústeres ONTAP locales organizando en niveles los datos inactivos en el almacenamiento de blobs de Azure. 
+---
+= Clasificación de datos desde clústeres ONTAP locales al almacenamiento de blobs de Azure en NetApp Cloud Tiering
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Libere espacio en sus clústeres ONTAP locales organizando en niveles los datos inactivos en el almacenamiento de blobs de Azure.  Libere espacio en sus clústeres ONTAP locales organizando en niveles los datos inactivos en el almacenamiento de blobs de Azure.
+
+
+
+== Inicio rápido
+
+Comience rápidamente siguiendo estos pasos o desplácese hacia abajo hasta las secciones restantes para obtener detalles completos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"]Prepárese para organizar los datos en niveles en el almacenamiento de blobs de Azure
+[role="quick-margin-para"]
+Necesitarás lo siguiente:
+
+[role="quick-margin-list"]
+* Un clúster ONTAP local de origen que ejecuta ONTAP 9.4 o posterior que haya agregado a la consola de NetApp y una conexión HTTPS al almacenamiento de blobs de Azure. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+* Un agente de consola instalado en una red virtual de Azure o en sus instalaciones.
+* Redes para un agente que habilita una conexión HTTPS saliente al clúster ONTAP en su centro de datos, al almacenamiento de Azure y al servicio de niveles de nube.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"]Configurar niveles
+[role="quick-margin-para"]
+En la consola de NetApp , seleccione un sistema ONTAP local, seleccione *Habilitar* para el servicio de niveles y siga las instrucciones para organizar los datos en niveles en el almacenamiento de blobs de Azure.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"]Configurar licencias
+[role="quick-margin-para"]
+Una vez finalizada su prueba gratuita, pague Cloud Tiering a través de una suscripción de pago por uso, una licencia BYOL de ONTAP Cloud Tiering o una combinación de ambas:
+
+[role="quick-margin-list"]
+* Para suscribirse desde Azure Marketplace, https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["ir a la oferta del Marketplace"^] , seleccione *Suscribirse* y siga las instrucciones.
+* Para pagar utilizando una licencia BYOL de Cloud Tiering, envíe un correo electrónico a:ng-cloud-tiering@netapp.com?subject=Licensing[contáctenos si necesita comprar una] y luegolink:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["agregarlo a la consola de NetApp"] .
+
+
+
+
+== Requisitos
+
+Verifique el soporte para su clúster ONTAP , configure su red y prepare su almacenamiento de objetos.
+
+La siguiente imagen muestra cada componente y las conexiones que debes preparar entre ellos:
+
+image:diagram_cloud_tiering_azure.png["Una imagen de arquitectura que muestra el servicio Cloud Tiering con una conexión al agente de consola en su proveedor de nube, el agente con una conexión a su clúster ONTAP y una conexión entre el clúster ONTAP y el almacenamiento de objetos en su proveedor de nube.  Los datos activos residen en el clúster ONTAP , mientras que los datos inactivos residen en el almacenamiento de objetos."]
+
+
+NOTE: La comunicación entre el agente de la consola y el almacenamiento de blobs es solo para la configuración del almacenamiento de objetos.  El agente puede residir en sus instalaciones, en lugar de en la nube.
+
+
+
+=== Prepare sus clústeres ONTAP
+
+Los clústeres de ONTAP deben cumplir los siguientes requisitos al organizar los datos en niveles en el almacenamiento de blobs de Azure.
+
+Plataformas ONTAP compatibles::
++
+--
+* Al usar ONTAP 9.8 y versiones posteriores: puede organizar en niveles los datos de los sistemas AFF o FAS con agregados totalmente SSD o agregados totalmente HDD.
+* Al utilizar ONTAP 9.7 y versiones anteriores: puede organizar en niveles los datos de los sistemas AFF o de los sistemas FAS con agregados totalmente SSD.
+
+
+--
+Versión de ONTAP compatible:: ONTAP 9.4 o posterior
+Requisitos de red del clúster::
++
+--
+* El clúster ONTAP inicia una conexión HTTPS a través del puerto 443 al almacenamiento de blobs de Azure.
++
+ONTAP lee y escribe datos hacia y desde el almacenamiento de objetos.  El almacenamiento de objetos nunca se inicia, simplemente responde.
+
++
+Si bien ExpressRoute ofrece un mejor rendimiento y cargos por transferencia de datos más bajos, no es necesario entre el clúster ONTAP y el almacenamiento de blobs de Azure.  Pero hacerlo es la mejor práctica recomendada.
+
+* Se requiere una conexión entrante del agente, que puede residir en una red virtual de Azure o en sus instalaciones.
++
+No se requiere una conexión entre el clúster y el servicio Cloud Tiering.
+
+* Se requiere un LIF entre clústeres en cada nodo de ONTAP que aloje los volúmenes que desea organizar en niveles.  El LIF debe estar asociado con el _IPspace_ que ONTAP debe usar para conectarse al almacenamiento de objetos.
++
+Cuando configura la clasificación de datos, Cloud Tiering le solicita el espacio IP que desea utilizar.  Debes elegir el espacio IP con el que está asociado cada LIF.  Ese podría ser el espacio IP "predeterminado" o un espacio IP personalizado que usted creó.  Obtenga más información sobre https://docs.netapp.com/us-en/ontap/networking/create_a_lif.html["LIF"^] y https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html["Espacios IP"^] .
+
+
+
+--
+Volúmenes y agregados admitidos:: La cantidad total de volúmenes que Cloud Tiering puede organizar en niveles puede ser menor que la cantidad de volúmenes en su sistema ONTAP .  Esto se debe a que los volúmenes no se pueden clasificar a partir de algunos agregados.  Consulte la documentación de ONTAP para https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html#functionality-or-features-not-supported-by-fabricpool["funcionalidad o características no compatibles con FabricPool"^] .
+
+
+
+NOTE: Cloud Tiering admite volúmenes FlexGroup , a partir de ONTAP 9.5.  La configuración funciona igual que cualquier otro volumen.
+
+
+
+=== Descubra un clúster ONTAP
+
+Debe agregar un sistema ONTAP local a la consola de NetApp antes de poder comenzar a organizar en niveles los datos fríos.
+
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Aprenda a descubrir un clúster"^] .
+
+
+
+=== Crear o cambiar agentes
+
+Se requiere un agente para organizar los datos en la nube.  Al organizar datos en niveles en Azure Blob Storage, puede usar un agente que esté en una red virtual de Azure o en sus instalaciones.  Necesitará crear un nuevo agente y asegurarse de que el agente seleccionado actualmente resida en Azure o en las instalaciones locales.
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Conozca a los agentes"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["Implementar un agente en Azure"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-on-prem.html["Instalación de un agente en un host Linux"^]
+
+
+
+
+=== Verifique que tenga los permisos de agente necesarios
+
+Si creó el agente de consola usando la versión 3.9.25 o superior, entonces ya está todo listo.  El rol personalizado que proporciona los permisos que un agente necesita para administrar recursos y procesos dentro de su red de Azure se configurará de forma predeterminada.  Ver el https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html#custom-role-permissions["permisos de rol personalizados requeridos"^] y el https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html#cloud-tiering["Permisos específicos requeridos para la organización en niveles de la nube"^] .
+
+Si creó el agente con una versión anterior, deberá editar la lista de permisos de la cuenta de Azure para agregar los permisos faltantes.
+
+
+
+=== Preparar la red para el agente de consola
+
+Asegúrese de que el agente de consola tenga las conexiones de red necesarias.  El agente se puede instalar localmente o en Azure.
+
+.Pasos
+. Asegúrese de que la red donde está instalado el agente permita las siguientes conexiones:
++
+** Una conexión HTTPS a través del puerto 443 al servicio Cloud Tiering y a su almacenamiento de objetos Azure Blob(https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-azure.html#endpoints-contacted-for-day-to-day-operations["ver la lista de puntos finales"^] )
+** Una conexión HTTPS a través del puerto 443 a su LIF de administración de clúster ONTAP
+
+
+. Si es necesario, habilite un punto final de servicio de VNet para el almacenamiento de Azure.
++
+Se recomienda un punto final de servicio de VNet al almacenamiento de Azure si tiene una conexión ExpressRoute o VPN desde su clúster de ONTAP a la VNet y desea que la comunicación entre el agente y el almacenamiento de blobs permanezca en su red privada virtual.
+
+
+
+
+
+=== Preparar el almacenamiento de blobs de Azure
+
+Al configurar la organización en niveles, debe identificar el grupo de recursos que desea usar, así como la cuenta de almacenamiento y el contenedor de Azure que pertenecen al grupo de recursos.  Una cuenta de almacenamiento permite que Cloud Tiering autentique y acceda al contenedor Blob utilizado para la clasificación de datos.
+
+Cloud Tiering permite la organización en niveles de cualquier cuenta de almacenamiento en cualquier región a la que se pueda acceder a través del agente.
+
+Cloud Tiering solo admite los tipos de cuentas de almacenamiento General Purpose v2 y Premium Block Blob.
+
+
+NOTE: Si planea configurar Cloud Tiering para usar un nivel de acceso de menor costo al que se trasladarán sus datos estratificados después de una cierta cantidad de días, no debe seleccionar ninguna regla de ciclo de vida al configurar el contenedor en su cuenta de Azure.  Cloud Tiering gestiona las transiciones del ciclo de vida.
+
+
+
+== Agrupe los datos inactivos desde su primer clúster en Azure Blob Storage
+
+Después de preparar su entorno de Azure, comience a organizar en niveles los datos inactivos desde su primer clúster.
+
+.Lo que necesitarás
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Un sistema ONTAP local para la consola de NetApp"^] .
+
+.Pasos
+. Seleccione el sistema ONTAP local.
+. Haga clic en *Habilitar* para el servicio de niveles desde el panel derecho.
++
+Si el destino de niveles de Azure Blob existe como un sistema en la página Sistemas, puede arrastrar el clúster al sistema de Azure Blob para iniciar el asistente de configuración.
+
++
+image:screenshot_setup_tiering_onprem.png["Una captura de pantalla que muestra la opción Habilitar que aparece en el lado derecho de la pantalla después de seleccionar un sistema ONTAP local."]
+
+. *Definir nombre de almacenamiento de objetos*: ingrese un nombre para este almacenamiento de objetos.  Debe ser único respecto de cualquier otro almacenamiento de objetos que pueda estar utilizando con agregados en este clúster.
+. *Seleccionar proveedor*: seleccione *Microsoft Azure* y seleccione *Continuar*.
+. *Seleccionar proveedor*: seleccione *Microsoft Azure* y seleccione *Continuar*.
+. Complete los pasos en las páginas *Crear almacenamiento de objetos*:
++
+.. *Grupo de recursos*: seleccione un grupo de recursos donde se administra un contenedor existente o donde desea crear un nuevo contenedor para datos escalonados y seleccione *Continuar*.
+.. *Grupo de recursos*: seleccione un grupo de recursos donde se administra un contenedor existente o donde desea crear un nuevo contenedor para datos escalonados y seleccione *Continuar*.
++
+Al utilizar un agente local, debe ingresar la suscripción de Azure que proporciona acceso al grupo de recursos.
+
+.. *Contenedor de Azure*: seleccione el botón de opción para agregar un nuevo contenedor de Blobs a una cuenta de almacenamiento o para usar un contenedor existente.  Luego, seleccione la cuenta de almacenamiento y elija el contenedor existente o ingrese el nombre del nuevo contenedor.  Luego seleccione *Continuar*.
+.. *Contenedor de Azure*: seleccione el botón de opción para agregar un nuevo contenedor de Blobs a una cuenta de almacenamiento o para usar un contenedor existente.  Luego, seleccione la cuenta de almacenamiento y elija el contenedor existente o ingrese el nombre del nuevo contenedor.  Luego seleccione *Continuar*.
++
+Las cuentas de almacenamiento y los contenedores que aparecen en este paso pertenecen al grupo de recursos que seleccionó en el paso anterior.
+
+.. *Ciclo de vida del nivel de acceso*: Cloud Tiering administra las transiciones del ciclo de vida de sus datos organizados en niveles.  Los datos comienzan en la clase _Hot_, pero puedes crear una regla para aplicar la clase _Cool_ a los datos después de una cierta cantidad de días.
++
+Seleccione el nivel de acceso al que desea transferir los datos escalonados y la cantidad de días antes de que los datos se asignen a ese nivel y seleccione *Continuar*.  Por ejemplo, la captura de pantalla a continuación muestra que los datos escalonados se asignan a la clase _Cool_ desde la clase _Hot_ después de 45 días en el almacenamiento de objetos.
+
++
+Si elige *Mantener los datos en este nivel de acceso*, los datos permanecerán en el nivel de acceso _Acceso activo_ y no se aplicarán reglas. link:reference-azure-support.html["Ver los niveles de acceso admitidos"^] .
+
++
+image:screenshot_tiering_lifecycle_selection_azure.png["Una captura de pantalla que muestra cómo seleccionar otro nivel de acceso que se asigna a sus datos después de una cierta cantidad de días."]
+
++
+Tenga en cuenta que la regla del ciclo de vida se aplica a todos los contenedores de blobs en la cuenta de almacenamiento seleccionada.
+
+.. *Red de clúster*: seleccione el espacio IP que ONTAP debe usar para conectarse al almacenamiento de objetos y seleccione *Continuar*.
++
+Seleccionar el espacio IP correcto garantiza que Cloud Tiering pueda configurar una conexión desde ONTAP al almacenamiento de objetos de su proveedor de nube.
+
++
+También puede configurar el ancho de banda de red disponible para cargar datos inactivos al almacenamiento de objetos definiendo la "Tasa de transferencia máxima".  Seleccione el botón de opción *Limitado* e ingrese el ancho de banda máximo que se puede usar, o seleccione *Ilimitado* para indicar que no hay límite.
+
+
+
+. En la página _Volúmenes por niveles_, seleccione los volúmenes para los que desea configurar la clasificación por niveles e inicie la página Política de niveles:
++
+** Para seleccionar todos los volúmenes, marque la casilla en la fila del título (image:button_backup_all_volumes.png[""] ) y seleccione *Configurar volúmenes*.
+** Para seleccionar varios volúmenes, marque la casilla de cada volumen (image:button_backup_1_volume.png[""] ) y seleccione *Configurar volúmenes*.
+** Para seleccionar un solo volumen, seleccione la fila (oimage:screenshot_edit_icon.gif["editar icono de lápiz"] icono) para el volumen.
++
+image:screenshot_tiering_initial_volumes.png["Una captura de pantalla que muestra cómo seleccionar un solo volumen, varios volúmenes o todos los volúmenes, y el botón modificar volúmenes seleccionados."]
+
+
+
+. En el cuadro de diálogo _Política de niveles_, seleccione una política de niveles, ajuste opcionalmente los días de enfriamiento para los volúmenes seleccionados y seleccione *Aplicar*.
++
+link:concept-cloud-tiering.html#volume-tiering-policies["Obtenga más información sobre las políticas de niveles de volumen y los días de enfriamiento"] .
+
++
+image:screenshot_tiering_initial_policy_settings.png["Una captura de pantalla que muestra la configuración de la política de niveles configurable."]
+
+
+
+.Resultado
+Ha configurado correctamente la organización en niveles de datos desde los volúmenes del clúster hasta el almacenamiento de objetos Blob de Azure.
+
+.¿Que sigue?
+link:task-licensing-cloud-tiering.html["Asegúrese de suscribirse al servicio Cloud Tiering"] .
+
+Puede revisar información sobre los datos activos e inactivos en el clúster. link:task-managing-tiering.html["Obtenga más información sobre cómo administrar su configuración de niveles"] .
+
+También puede crear almacenamiento de objetos adicional en los casos en los que desee organizar datos de ciertos agregados en un clúster en diferentes almacenes de objetos.  O si planea utilizar FabricPool Mirroring donde sus datos escalonados se replican en un almacén de objetos adicional. link:task-managing-object-storage.html["Obtenga más información sobre la gestión de almacenes de objetos"] .
