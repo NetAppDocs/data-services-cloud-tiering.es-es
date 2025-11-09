@@ -154,8 +154,6 @@ NOTE: Si planea configurar Cloud Tiering para usar clases de almacenamiento de m
 . Ir a https://console.cloud.google.com/storage/settings["Configuración de almacenamiento de GCP"^] y crear claves de acceso para la cuenta de servicio:
 +
 .. Seleccione un proyecto y seleccione *Interoperabilidad*.  Si aún no lo ha hecho, seleccione *Habilitar acceso de interoperabilidad*.
-.. Seleccione un proyecto y seleccione *Interoperabilidad*.  Si aún no lo ha hecho, seleccione *Habilitar acceso de interoperabilidad*.
-.. En *Claves de acceso para cuentas de servicio*, seleccione *Crear una clave para una cuenta de servicio*, seleccione la cuenta de servicio que acaba de crear y seleccione *Crear clave*.
 .. En *Claves de acceso para cuentas de servicio*, seleccione *Crear una clave para una cuenta de servicio*, seleccione la cuenta de servicio que acaba de crear y seleccione *Crear clave*.
 +
 Necesitará ingresar las claves más tarde cuando configure la organización en niveles de la nube.

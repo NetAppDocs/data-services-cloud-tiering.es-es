@@ -158,10 +158,6 @@ La mejor manera de estimar cuánto le cobrará un proveedor de nube por alojar s
 
 === ¿Los proveedores de la nube cobran algún cargo adicional por leer o recuperar datos desde el almacenamiento de objetos al almacenamiento local?
 
-
-
-=== ¿Los proveedores de la nube cobran algún cargo adicional por leer o recuperar datos desde el almacenamiento de objetos al almacenamiento local?
-
 Sí. Controlar https://aws.amazon.com/s3/pricing/["Precios de Amazon S3"] , https://azure.microsoft.com/en-us/pricing/details/storage/blobs/["Precios de Block Blob"] , y https://cloud.google.com/storage/pricing["Precios del almacenamiento en la nube"] por precios adicionales incurridos con la lectura/recuperación de datos.
 
 

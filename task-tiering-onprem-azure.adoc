@@ -14,7 +14,7 @@ summary: Libere espacio en sus clústeres ONTAP locales organizando en niveles l
 
 
 [role="lead"]
-Libere espacio en sus clústeres ONTAP locales organizando en niveles los datos inactivos en el almacenamiento de blobs de Azure.  Libere espacio en sus clústeres ONTAP locales organizando en niveles los datos inactivos en el almacenamiento de blobs de Azure.
+Libere espacio en sus clústeres ONTAP locales organizando en niveles los datos inactivos en el almacenamiento de blobs de Azure.
 
 
 
@@ -179,15 +179,12 @@ image:screenshot_setup_tiering_onprem.png["Una captura de pantalla que muestra l
 
 . *Definir nombre de almacenamiento de objetos*: ingrese un nombre para este almacenamiento de objetos.  Debe ser único respecto de cualquier otro almacenamiento de objetos que pueda estar utilizando con agregados en este clúster.
 . *Seleccionar proveedor*: seleccione *Microsoft Azure* y seleccione *Continuar*.
-. *Seleccionar proveedor*: seleccione *Microsoft Azure* y seleccione *Continuar*.
 . Complete los pasos en las páginas *Crear almacenamiento de objetos*:
 +
-.. *Grupo de recursos*: seleccione un grupo de recursos donde se administra un contenedor existente o donde desea crear un nuevo contenedor para datos escalonados y seleccione *Continuar*.
 .. *Grupo de recursos*: seleccione un grupo de recursos donde se administra un contenedor existente o donde desea crear un nuevo contenedor para datos escalonados y seleccione *Continuar*.
 +
 Al utilizar un agente local, debe ingresar la suscripción de Azure que proporciona acceso al grupo de recursos.
 
-.. *Contenedor de Azure*: seleccione el botón de opción para agregar un nuevo contenedor de Blobs a una cuenta de almacenamiento o para usar un contenedor existente.  Luego, seleccione la cuenta de almacenamiento y elija el contenedor existente o ingrese el nombre del nuevo contenedor.  Luego seleccione *Continuar*.
 .. *Contenedor de Azure*: seleccione el botón de opción para agregar un nuevo contenedor de Blobs a una cuenta de almacenamiento o para usar un contenedor existente.  Luego, seleccione la cuenta de almacenamiento y elija el contenedor existente o ingrese el nombre del nuevo contenedor.  Luego seleccione *Continuar*.
 +
 Las cuentas de almacenamiento y los contenedores que aparecen en este paso pertenecen al grupo de recursos que seleccionó en el paso anterior.

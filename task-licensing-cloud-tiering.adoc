@@ -51,7 +51,6 @@ Suscríbase a Cloud Tiering desde AWS Marketplace para configurar una suscripci�
 .Pasos
 . En la NetApp Console, seleccione *Movilidad > Niveles de nube > Panel local*.
 . En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Amazon Web Services y luego seleccione *Continuar*.
-. En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Amazon Web Services y luego seleccione *Continuar*.
 . Suscríbete desde el https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4["Mercado de AWS"^] y luego vuelva a iniciar sesión en la NetApp Console para completar el registro.
 +
 El siguiente vídeo muestra el proceso:
@@ -71,7 +70,6 @@ Suscríbase a Cloud Tiering desde Azure Marketplace para configurar una suscripc
 .Pasos
 . En la NetApp Console, seleccione *Movilidad > Niveles de nube > Panel local*.
 . En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Microsoft Azure y luego seleccione *Continuar*.
-. En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Microsoft Azure y luego seleccione *Continuar*.
 . Suscríbete desde el https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Azure Marketplace"^] y luego vuelva a iniciar sesión en la NetApp Console para completar el registro.
 +
 El siguiente vídeo muestra el proceso:
@@ -90,7 +88,6 @@ Suscríbete a Cloud Tiering desde Google Cloud Marketplace para configurar una s
 [[subscribe-gcp]]
 .Pasos
 . En la NetApp Console, seleccione *Movilidad > Niveles de nube > Panel local*.
-. En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Google Cloud y luego seleccione *Continuar*.
 . En la sección _Suscripciones de Marketplace_, seleccione *Suscribirse* en Google Cloud y luego seleccione *Continuar*.
 . Suscríbete desde el https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project["Mercado de Google Cloud"^] y luego vuelva a iniciar sesión en la NetApp Console para completar el registro.
 +

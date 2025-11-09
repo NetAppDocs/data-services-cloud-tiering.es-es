@@ -24,7 +24,6 @@ Puede ver todos los almacenes de objetos que se han configurado para cada clúst
 
 .Pasos
 . Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Información del almacén de objetos*.
-. Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Información del almacén de objetos*.
 . Revise los detalles sobre los almacenes de objetos.
 +
 Este ejemplo muestra un almacén de objetos Amazon S3 y Azure Blob adjunto a diferentes agregados en un clúster.
@@ -42,8 +41,6 @@ Puede agregar un nuevo almacén de objetos para agregados en su clúster.  Despu
 
 .Pasos
 . Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Información del almacén de objetos*.
-. Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Información del almacén de objetos*.
-. Desde la página Información del almacén de objetos, seleccione *Crear nuevo almacén de objetos*.
 . Desde la página Información del almacén de objetos, seleccione *Crear nuevo almacén de objetos*.
 +
 image:screenshot_tiering_object_store_create_button.png["Una captura de pantalla que muestra el botón Crear nuevo almacén de objetos para crear un nuevo almacén de objetos."]

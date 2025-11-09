@@ -27,7 +27,6 @@ Es mejor ejecutar esta comprobación cuando el clúster tenga menos del 50 % de 
 . Desde el menú de navegación de la izquierda, seleccione *Movilidad > Niveles de nube*.
 . Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Prueba de rendimiento de la nube*.
 . Revise los detalles y seleccione *Continuar*.
-. Revise los detalles y seleccione *Continuar*.
 . Siga las instrucciones para proporcionar la información requerida.
 +
 La información que debes proporcionar es la misma que si estuvieras configurando la organización en niveles en el clúster.
@@ -37,7 +36,6 @@ La información que debes proporcionar es la misma que si estuvieras configurand
 
 .Pasos para un clúster que se ha configurado para niveles
 . Desde el menú de navegación de la izquierda, seleccione *Movilidad > Niveles de nube*.
-. Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Prueba de rendimiento de la nube*.
 . Desde la página *Clústeres*, seleccione el ícono de menú de un clúster y seleccione *Prueba de rendimiento de la nube*.
 . Seleccione un nodo de la lista desplegable.
 . Vea los resultados o vuelva a verificar el rendimiento.

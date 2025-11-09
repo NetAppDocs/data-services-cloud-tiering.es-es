@@ -255,7 +255,7 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 
 Si planea usar una conexión a internet pública estándar, el agente configurará todos los permisos y no tendrá que hacer nada más. Este tipo de conexión se muestra en la<<Diagramas de red para opciones de conexión,primer diagrama de arriba>> .
 
-Si desea tener una conexión más segura a través de Internet desde su centro de datos local a la VPC, existe una opción para seleccionar una conexión AWS PrivateLink en el asistente de activación de niveles.  Es necesario si planea usar una VPN o AWS Direct Connect para conectar su sistema local a través de una interfaz de punto final de VPC que usa una dirección IP privada.  Este tipo de conexión se muestra en la<<Diagramas de red para opciones de conexión,segundo diagrama de arriba>> .  Si desea tener una conexión más segura a través de Internet desde su centro de datos local a la VPC, existe una opción para seleccionar una conexión AWS PrivateLink en el asistente de activación de niveles.  Es necesario si planea usar una VPN o AWS Direct Connect para conectar su sistema local a través de una interfaz de punto final de VPC que usa una dirección IP privada.  Este tipo de conexión se muestra en la<<Diagramas de red para opciones de conexión,segundo diagrama de arriba>> .
+Si desea tener una conexión más segura a través de Internet desde su centro de datos local a la VPC, existe una opción para seleccionar una conexión AWS PrivateLink en el asistente de activación de niveles. Es necesario si planea usar una VPN o AWS Direct Connect para conectar su sistema local a través de una interfaz de punto final de VPC que usa una dirección IP privada. Este tipo de conexión se muestra en la<<Diagramas de red para opciones de conexión,segundo diagrama de arriba>> .
 
 . Cree una configuración de punto final de interfaz mediante la consola de Amazon VPC o la línea de comandos. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html["Consulte los detalles sobre el uso de AWS PrivateLink para Amazon S3"^] .
 . Modificar la configuración del grupo de seguridad asociado con el agente.  Debe cambiar la política a "Personalizada" (de "Acceso completo") y debe<<Configurar permisos S3,Agregue los permisos de agente S3 necesarios>> como se mostró anteriormente.
@@ -323,13 +323,11 @@ image:screenshot_setup_tiering_onprem.png["Una captura de pantalla que muestra l
 
 . *Definir nombre de almacenamiento de objetos*: ingrese un nombre para este almacenamiento de objetos.  Debe ser único respecto de cualquier otro almacenamiento de objetos que pueda estar utilizando con agregados en este clúster.
 . *Seleccionar proveedor*: seleccione *Amazon Web Services* y seleccione *Continuar*.
-. *Seleccionar proveedor*: seleccione *Amazon Web Services* y seleccione *Continuar*.
 +
 image:screenshot_tiering_aws_s3_bucket.png["Una captura de pantalla que muestra los datos que se deben proporcionar para configurar la clasificación en niveles en un bucket S3."]
 
 . Complete las secciones en la página *Configuración de niveles*:
 +
-.. *S3 Bucket*: agregue un nuevo bucket S3 o seleccione un bucket S3 existente, seleccione la región del bucket y seleccione *Continuar*.
 .. *S3 Bucket*: agregue un nuevo bucket S3 o seleccione un bucket S3 existente, seleccione la región del bucket y seleccione *Continuar*.
 +
 Al utilizar un agente local, debe ingresar el ID de cuenta de AWS que proporciona acceso al depósito S3 existente o al nuevo depósito S3 que se creará.
