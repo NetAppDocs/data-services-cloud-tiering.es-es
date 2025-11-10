@@ -164,7 +164,7 @@ Sí. Controlar https://aws.amazon.com/s3/pricing/["Precios de Amazon S3"] , http
 
 === ¿Cómo puedo estimar el ahorro de mis volúmenes y obtener un informe de datos fríos antes de habilitar la organización en niveles en la nube?
 
-Para obtener una estimación, agregue su clúster ONTAP a la NetApp Console e inspecciónelo a través de la página Clústeres de niveles de nube.  Seleccione *Calcular ahorros potenciales por niveles* para el clúster para iniciar el https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de TCO de niveles de nube"^] para ver cuánto dinero puedes ahorrar.
+Para obtener una estimación, agregue su clúster ONTAP a la NetApp Console e inspecciónelo a través de la página Clústeres de niveles de nube. Seleccione *Calcular ahorros potenciales por niveles* para el clúster para iniciar el https://www.netapp.com/data-services/tiering/tco-calculator["Calculadora de TCO de niveles de nube"^] para ver cuánto dinero puedes ahorrar.
 
 
 
@@ -214,7 +214,7 @@ Si tiene sistemas Cloud Volumes ONTAP , los encontrará en la página Clústeres
 
 Depende de dónde ubiques los datos fríos.  Consulte los siguientes enlaces para obtener más detalles:
 
-* link:task-tiering-onprem-aws.html#prepare-your-ontap-cluster["Clasificación de datos en niveles en Amazon S3"]
+* link:task-tiering-onprem-aws.html#preparing-your-ontap-clusters["Clasificación de datos en niveles en Amazon S3"]
 * link:task-tiering-onprem-azure.html#preparing-your-ontap-clusters["Organización de datos en niveles en Azure Blob Storage"]
 * link:task-tiering-onprem-gcp.html#preparing-your-ontap-clusters["Clasificación de datos en Google Cloud Storage"]
 * link:task-tiering-onprem-storagegrid.html#preparing-your-ontap-clusters["Clasificación de datos en niveles en StorageGRID"]

@@ -105,6 +105,9 @@ https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["A
 StorageGRID debe cumplir los siguientes requisitos.
 
 Versiones de StorageGRID compatibles:: Se admite StorageGRID 10.3 y versiones posteriores.
+
+
+[[preparing-storagegrid]]
 Credenciales S3:: Cuando configura la organización en niveles en StorageGRID, debe proporcionar a Cloud Tiering una clave de acceso S3 y una clave secreta.  Cloud Tiering utiliza las claves para acceder a sus buckets.
 +
 --

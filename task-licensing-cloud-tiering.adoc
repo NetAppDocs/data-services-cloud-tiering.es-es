@@ -183,7 +183,7 @@ Los clústeres ONTAP en las siguientes configuraciones pueden usar licencias de 
 
 === Proceso para clústeres existentes que tienen una licencia de FabricPool
 
-Cuando tulink:task-managing-tiering.html#discovering-additional-clusters-from-bluexp-tiering["Descubra cualquiera de estos tipos de clústeres especiales en Cloud Tiering"] Cloud Tiering reconoce la licencia de FabricPool y agrega la licencia a la consola.  Estos grupos continuarán clasificando los datos como de costumbre.  Cuando caduque la licencia de FabricPool , necesitarás comprar una licencia de Cloud Tiering.
+Cuando tulink:task-managing-tiering.html#discovering-additional-clusters-from-cloud-tiering["Descubra cualquiera de estos tipos de clústeres especiales en Cloud Tiering"] Cloud Tiering reconoce la licencia de FabricPool y agrega la licencia a la consola. Estos grupos continuarán clasificando los datos como de costumbre. Cuando caduque la licencia de FabricPool , necesitarás comprar una licencia de Cloud Tiering.
 
 
 
@@ -207,9 +207,9 @@ Tenga en cuenta que, dado que los datos se organizan en niveles en dos ubicacion
 +
 No configure la organización en niveles en este momento.
 
-. link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-byol-license["Comprar una licencia de Cloud Tiering"]para la capacidad necesaria para el nuevo clúster o clústeres.
+. link:task-licensing-cloud-tiering.html#use-a-cloud-tiering-byol-license["Comprar una licencia de Cloud Tiering"]para la capacidad necesaria para el nuevo clúster o clústeres.
 . En la consola<<licenses,añadir la licencia a la billetera digital>> [añadir la licencia].
-. En la organización por niveles de la nube,link:task-managing-tiering.html#discovering-additional-clusters-from-bluexp-tiering["descubre los nuevos clusters"] .
+. En la organización por niveles de la nube,link:task-managing-tiering.html#discovering-additional-clusters-from-cloud-tiering["descubre los nuevos clusters"] .
 . Desde la página Clústeres, seleccioneimage:screenshot_horizontal_more_button.gif["Icono más"] para el clúster y seleccione *Implementar licencia*.
 +
 image:screenshot_tiering_deploy_license.png["Una captura de pantalla que muestra cómo implementar una licencia por niveles en un clúster de ONTAP ."]

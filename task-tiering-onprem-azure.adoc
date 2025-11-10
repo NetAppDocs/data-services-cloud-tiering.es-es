@@ -123,7 +123,7 @@ Se requiere un agente para organizar los datos en la nube.  Al organizar datos e
 
 === Verifique que tenga los permisos de agente necesarios
 
-Si creó el agente de consola usando la versión 3.9.25 o superior, entonces ya está todo listo.  El rol personalizado que proporciona los permisos que un agente necesita para administrar recursos y procesos dentro de su red de Azure se configurará de forma predeterminada.  Ver el https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html#custom-role-permissions["permisos de rol personalizados requeridos"^] y el https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html#cloud-tiering["Permisos específicos requeridos para la organización en niveles de la nube"^] .
+Si creó el agente de consola usando la versión 3.9.25 o superior, entonces ya está todo listo. El rol personalizado que proporciona los permisos que un agente necesita para administrar recursos y procesos dentro de su red de Azure se configurará de forma predeterminada. Ver el https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html["permisos de rol personalizados requeridos"^] y el https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html#tiering["Permisos específicos requeridos para la organización en niveles de la nube"^] .
 
 Si creó el agente con una versión anterior, deberá editar la lista de permisos de la cuenta de Azure para agregar los permisos faltantes.
 

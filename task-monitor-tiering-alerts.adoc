@@ -22,7 +22,7 @@ En este momento, hay un evento de niveles que aparecerá como notificación:
 
 Almacene datos adicionales desde el clúster <nombre> al almacenamiento de objetos para ahorrar espacio de almacenamiento
 
-Esta notificación es una "Recomendación" para mejorar la eficiencia del sistema y reducir los costos de almacenamiento.  Indica que un clúster está agrupando menos del 20 % de sus datos fríos, incluidos los clústeres que no están agrupando datos.  Proporciona un enlace a la https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de ahorro y costo total de propiedad de Cloud Tiering"^] para ayudarle a calcular sus ahorros de costos.
+Esta notificación es una "Recomendación" para mejorar la eficiencia del sistema y reducir los costos de almacenamiento. Indica que un clúster está agrupando menos del 20 % de sus datos fríos, incluidos los clústeres que no están agrupando datos. Proporciona un enlace a la https://www.netapp.com/data-services/tiering/tco-calculator/["Calculadora de ahorro y costo total de propiedad de Cloud Tiering"^] para ayudarle a calcular sus ahorros de costos.
 
 La NetApp Console no ​​envía un correo electrónico para esta notificación.
 
